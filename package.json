@@ -1,0 +1,32 @@
+{
+  "name": "sanfel",
+  "version": "1.0.0",
+  "description": "Esta aplicación esta diseñada para los colaboradores de la fundación Sanfel. Aquí se podrá visualizar de forma más sencilla la información proporcionada por la fundación.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "server": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarianaPH/Sanfel.git"
+  },
+  "author": "Mariana Peña Hernández",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarianaPH/Sanfel/issues"
+  },
+  "homepage": "https://github.com/MarianaPH/Sanfel#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "config": "^3.3.6",
+    "express": "^4.17.1",
+    "joi": "^17.4.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.7"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.1",
+    "nodemon": "^2.0.12"
+  }
+}

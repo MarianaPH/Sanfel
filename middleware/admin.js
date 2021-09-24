@@ -2,32 +2,52 @@ const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
 const config = require("config");
 
-const { authSchemaAdmin } = require("../config/validationJoi");
+const { registerSchemaAdmin, loginSchemaAdmin } = require("../config/validationJoi");
 
 const Admin = require('../models/Admin');
 
-async function validateAdmin(req, res){
+
+async function registrationAdmin(req, res){
   try {
     const { password } = req.body;
-    const result = await authSchemaAdmin.validateAsync(req.body);
+    const validate = req.header('Req-Type');
+    if (validate === 'login') {
+      const result = await loginSchemaAdmin.validateAsync(req.body);
     
+      //See if user exists
+      var admin = await Admin.findOne({ email: result.email });
+      if (admin){
+        const isMatch = await bcrypt.compare(password, admin.password);
 
-    //See if user exists
-    let admin = await Admin.findOne({ email: result.email });
-    if (admin) {
-      return res.status(400).json({ errors: [{ msg: "User already exists" }] });
+        if (!isMatch) {
+          return res.status(400).json({ errors: [{ msg: "Invalid Credential" }] });
+        }
+      }
+      else{
+        return res.status(400).json({ errors: [{ msg: "Invalid Credential" }] });
+      }      
     }
+    else{
+      const result = await registerSchemaAdmin.validateAsync(req.body);
+      console.log(result);
+      //See if user exists
+      var admin = await Admin.findOne({ email: result.email });
+      if(!admin){
+        admin = new Admin({
+        name: result.name,
+        email: result.email,
+        password: result.password,
+        });
 
-    admin = new Admin({
-      name: result.name,
-      email: result.email,
-      password: result.password,
-    });
-
-    const salt = await bcrypt.genSalt(10);
-    admin.password = await bcrypt.hash(password, salt);
-    await admin.save();
-
+        const salt = await bcrypt.genSalt(10);
+        admin.password = await bcrypt.hash(password, salt);
+        await admin.save();
+      }
+      else{
+        return res.status(400).json({ errors: [{ msg: "User already exists" }] });
+      }
+    }
+    
     const payload = {
       admin: {
         id: admin.id,
@@ -54,5 +74,5 @@ async function validateAdmin(req, res){
 }
 
 module.exports = {
-  validateAdmin,
+  registrationAdmin,
 }

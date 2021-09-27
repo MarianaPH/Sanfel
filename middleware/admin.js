@@ -7,7 +7,7 @@ const { registerSchemaAdmin, loginSchemaAdmin } = require("../config/validationJ
 const Admin = require('../models/Admin');
 
 
-async function registrationAdmin(req, res){
+async function validationAdmin(req, res){
   try {
     const { password } = req.body;
     const validate = req.header('Req-Type');
@@ -29,7 +29,6 @@ async function registrationAdmin(req, res){
     }
     else{
       const result = await registerSchemaAdmin.validateAsync(req.body);
-      console.log(result);
       //See if user exists
       var admin = await Admin.findOne({ email: result.email });
       if(!admin){
@@ -74,5 +73,5 @@ async function registrationAdmin(req, res){
 }
 
 module.exports = {
-  registrationAdmin,
+  validationAdmin,
 }

@@ -1,16 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const {validationAdmin} = require("../middleware/admin");
 const {auth, authAdmin} = require ('../middleware/auth');
+const {validationAdmin} = require('../middleware/admin');
 
-//@route      POST api/admin
-//@desc       Register admin
-//access      Private
-router.post("/register-admin", auth, validationAdmin);
 
 //@route      POST api/admin
 //@desc       Load Admin 
-//access      Public
+//access      Private
 router.get('/', auth, authAdmin);
 
 //@route      POST api/admin

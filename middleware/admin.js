@@ -73,5 +73,5 @@ async function validationAdmin(req, res){
 }
 
 module.exports = {
-  validationAdmin,
+  validationAdmin
 }

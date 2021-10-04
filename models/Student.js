@@ -1,4 +1,3 @@
-const { string } = require('joi');
 const mongoose = require('mongoose');
 
 const StudentSchema = new mongoose.Schema({
@@ -18,18 +17,10 @@ const StudentSchema = new mongoose.Schema({
     type: String,
     // required: true
   },
-  workshops:[
-    {
-      workshop: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'workshops'
-      },
-      description:{
-        type: String,
-        required: true
-      } 
-    }
-  ],
+  workshops:{
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'workshops'
+   },
   questions: [
     {
       question: {
@@ -40,7 +31,6 @@ const StudentSchema = new mongoose.Schema({
         type: Number,
         min: 1,
         max: 5,
-        required: true
       }
     }
   ]

@@ -56,7 +56,7 @@ async function validationAdmin(req, res){
     jwt.sign(
       payload,
       config.get("jwtSecret"),
-      { expiresIn: 3600 },
+      { expiresIn: 7200 },
       (error, token) => {
         if (error) throw error;
         return res.json({token});

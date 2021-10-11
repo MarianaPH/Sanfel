@@ -1,25 +1,21 @@
 const mongoose = require('mongoose');
 
-const AreaSchems = new mongoose.Schema({
-  name: {
+const AreaSchema = new mongoose.Schema({
+  description: {
     type: String,
     required: true
   },
   averages: [
     {
-      avarage_5_to_7: {
-        type: Number,
+      range: {
+        type: String,
         required: true
       },
-      avarage_8_to_12: {
-        type: Number,
-        required: true
-      },
-      avarage_teenager: {
-        type: Number,
-        required: true
-      },
+      average: {
+        type: Number
+      }
     }
-  ],
-
+  ] 
 });
+
+module.exports = Area = mongoose.model('area', AreaSchema)

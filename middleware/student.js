@@ -1,15 +1,28 @@
-const {registerSchemaStudent} = require('../config/validationJoi');
+const { error } = require('npmlog');
+const {registerSchemaStudent, editSchemaStudent} = require('../config/validationJoi');
+const Question = require('../models/Question');
 const Student = require('../models/Student');
+const Area = require('../models/Area');
 
 async function validateStudent(req, res){
   try {
     
     const result = await registerSchemaStudent.validateAsync(req.body);
 
+
+    const questions = result.questions;
+
+    const averages = await Averages(questions);
+    console.log(averages);
+
     var student = new Student({
       name: result.name,
       email: result.email,
       age: result.age,
+      sex: result.sex,
+      workshops: result.workshops,
+      questions: result.questions,
+      averages: averages
     });
 
     await student.save();
@@ -22,8 +35,85 @@ async function validateStudent(req, res){
       return res.status(400).send(error.message);
     }
     console.log(error.message);
+    console.log(error);
     res.status(500).send("Server error");
   }
+}
+
+async function Averages(questions) {
+  try {
+    
+    let areas = await Area.find();
+    var averages = [];
+    
+    for (let index = 0; index < areas.length; index++) {
+      const questionsByArea = await identifyAreas(questions, areas[index]);
+      // console.log((questionsByArea));
+      // console.log('-------------------');
+      if (questionsByArea.length){
+        var average ={};
+        average.area = areas[index].description;
+        average.average = await calculateAverages(questionsByArea);
+
+        averages.push(average);
+        // console.log(averages);
+      }
+    }
+
+    return averages;
+
+    // let areaQ = await Question.findById(averagess[0].question_id);
+
+    // const califications = averagess.map(cal => { return cal.calification });
+
+    // const score = califications.reduce((total, calification) => { return total + calification })
+
+    // const calification = score / califications.length;
+
+    // const soy = {}
+    // soy.area = areaQ.area;
+    // soy.average = calification;
+  
+
+    // console.log(califications);
+    // console.log(score);
+    // console.log(calification);
+    // console.log(areaQ.area);
+    // console.log(soy);
+
+    return true;
+    
+  } catch (error) {
+    console.log(error.message);
+    console.log(error);
+    res.status(500).send("Server error");
+  }
+}
+
+async function identifyAreas(studentQuestions, area) {
+  try {
+    let questions = await Question.find({area: area._id}); 
+    const questionsByArea = studentQuestions.filter((question) => {
+      for (let index = 0; index < questions.length; index++) {
+        if (question.question_id.toString() === questions[index]._id.toString()) {
+          return question
+        }        
+      }
+    });
+    return questionsByArea;
+  }catch (error) {
+    console.log(error.message);
+    console.log(error);
+    res.status(500).send("Server error");
+  }
+}
+
+async function calculateAverages(questionByArea) {
+  const califications = questionByArea.map(cal => { return cal.calification });
+  const score = califications.reduce((total, calification) => { return total + calification });
+  const calification = score / califications.length;
+  return calification;
+
 }
 
 async function getStudentsNames(req, res){
@@ -33,6 +123,7 @@ async function getStudentsNames(req, res){
     var age2 = req.params.student_age2; 
 
     const students = await Student.find({age: {$gt : age1, $lt: age2}}, {name : 1});
+
     res.json(students);
   } catch (error) {
     console.error(error.message);
@@ -42,8 +133,11 @@ async function getStudentsNames(req, res){
 
 async function getStudentById(req, res){
   try {
-    const students = await Student.findById(req.params.student_id);
-    res.json(students);
+    const student = await Student.findById(req.params.student_id, {questions: 0});
+
+    if(!student) return res.status(404).send('Student not found');
+
+    res.json(student);
 
   } catch (error) {
     console.error(error.message);
@@ -52,27 +146,23 @@ async function getStudentById(req, res){
 }
 
 async function editStudent(req, res) {
-  result = await registerSchemaStudent.validateAsync(req.body);
+  result = await editSchemaStudent.validateAsync(req.body);
   const {
     name,
     email,
     sex,
     age,
     workshops = []
-  } = req.body;
-
-  console.log(req.body );
+  } = result;
 
   //Build profile object
   const studentFields = {};
-  if (name) studentFields.name = name;
-  if (email) studentFields.email = email;
-  if (sex) studentFields.sex = sex;
-  if (age) studentFields.age = age;
-
-
+  if (name) studentFields.name = result.name;
+  if (email) studentFields.email = result.email;
+  if (sex) studentFields.sex = result.sex;
+  if (age) studentFields.age = result.age;
   if(workshops){
-    studentFields.workshops = workshops;
+    studentFields.workshops = result.workshops;
   }
 
   try {
@@ -80,7 +170,7 @@ async function editStudent(req, res) {
 
     if (student){
       //Update
-      student = await Student.findOneAndUpdate(req.params.student_id, {$set: studentFields}, {new: true});
+      student = await Student.findByIdAndUpdate(req.params.student_id, {$set: studentFields}, {new: true});
     }
 
     res.json(student);

@@ -15,7 +15,7 @@ const StudentSchema = new mongoose.Schema({
   },
   sex:{
     type: String,
-    // required: true
+    required: true
   },
   workshops:{
     type: [mongoose.Schema.Types.ObjectId],
@@ -23,7 +23,7 @@ const StudentSchema = new mongoose.Schema({
    },
   questions: [
     {
-      question: {
+      question_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'questions'
       },
@@ -31,6 +31,18 @@ const StudentSchema = new mongoose.Schema({
         type: Number,
         min: 1,
         max: 5,
+      }
+    }
+  ],
+  averages: [
+    {
+      area: {
+        type: String,
+        required: true
+      },
+      average: {
+        type: Number,
+        required: true
       }
     }
   ]

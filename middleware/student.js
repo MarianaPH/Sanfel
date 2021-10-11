@@ -13,7 +13,6 @@ async function validateStudent(req, res){
     const questions = result.questions;
 
     const averages = await Averages(questions);
-    console.log(averages);
 
     var student = new Student({
       name: result.name,
@@ -48,41 +47,17 @@ async function Averages(questions) {
     
     for (let index = 0; index < areas.length; index++) {
       const questionsByArea = await identifyAreas(questions, areas[index]);
-      // console.log((questionsByArea));
-      // console.log('-------------------');
       if (questionsByArea.length){
         var average ={};
         average.area = areas[index].description;
         average.average = await calculateAverages(questionsByArea);
 
         averages.push(average);
-        // console.log(averages);
       }
     }
 
     return averages;
-
-    // let areaQ = await Question.findById(averagess[0].question_id);
-
-    // const califications = averagess.map(cal => { return cal.calification });
-
-    // const score = califications.reduce((total, calification) => { return total + calification })
-
-    // const calification = score / califications.length;
-
-    // const soy = {}
-    // soy.area = areaQ.area;
-    // soy.average = calification;
   
-
-    // console.log(califications);
-    // console.log(score);
-    // console.log(calification);
-    // console.log(areaQ.area);
-    // console.log(soy);
-
-    return true;
-    
   } catch (error) {
     console.log(error.message);
     console.log(error);

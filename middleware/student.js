@@ -1,4 +1,3 @@
-const { error } = require('npmlog');
 const {registerSchemaStudent, editSchemaStudent} = require('../config/validationJoi');
 const Question = require('../models/Question');
 const Student = require('../models/Student');
@@ -8,11 +7,15 @@ async function validateStudent(req, res){
   try {
     
     const result = await registerSchemaStudent.validateAsync(req.body);
-
+    var student = await Student.findOne({ email: result.email });
+    if (student){
+      return res.status(400).json({ errors: [{ msg: "Student already exists" }] });
+    }
 
     const questions = result.questions;
-
-    const averages = await Averages(questions);
+    
+    const averages = await studentQuestionsAverages(questions);
+    if (!averages) return res.status(501).json({ errors: [{ msg: "Por el momento no es posible realizar el registro, intentelo más tarde" }] });
 
     var student = new Student({
       name: result.name,
@@ -25,7 +28,11 @@ async function validateStudent(req, res){
     });
 
     await student.save();
-    
+
+    const areasAverage = await areasAverages();
+    if (!areasAverage) return res.status(501).json({ errors: [{ msg: "Por el momento no es posible realizar el registro, intentelo más tarde" }] });
+
+
     res.send(student);
 
   } catch (error) {
@@ -39,23 +46,23 @@ async function validateStudent(req, res){
   }
 }
 
-async function Averages(questions) {
+async function studentQuestionsAverages(questions) {
   try {
-    
     let areas = await Area.find();
-    var averages = [];
-    
-    for (let index = 0; index < areas.length; index++) {
-      const questionsByArea = await identifyAreas(questions, areas[index]);
-      if (questionsByArea.length){
-        var average ={};
-        average.area = areas[index].description;
-        average.average = await calculateAverages(questionsByArea);
 
+    if(!areas.length) return false;
+
+    const averages = [];
+
+    for (let index = 0; index < areas.length; index++) {
+      const valuesByArea = await identifyAreas(questions, areas[index]);
+      if (valuesByArea) {
+        var average ={};
+        average.area = areas[index]._id;
+        average.value = calculateAverages(valuesByArea);
         averages.push(average);
       }
     }
-
     return averages;
   
   } catch (error) {
@@ -67,7 +74,10 @@ async function Averages(questions) {
 
 async function identifyAreas(studentQuestions, area) {
   try {
-    let questions = await Question.find({area: area._id}); 
+    let questions = await Question.find({area: area._id});
+    
+    if (!questions.length) return false;
+    
     const questionsByArea = studentQuestions.filter((question) => {
       for (let index = 0; index < questions.length; index++) {
         if (question.question_id.toString() === questions[index]._id.toString()) {
@@ -75,7 +85,9 @@ async function identifyAreas(studentQuestions, area) {
         }        
       }
     });
-    return questionsByArea;
+    const values = questionsByArea.map(val => { return val.value });
+    
+    return values;
   }catch (error) {
     console.log(error.message);
     console.log(error);
@@ -83,12 +95,50 @@ async function identifyAreas(studentQuestions, area) {
   }
 }
 
-async function calculateAverages(questionByArea) {
-  const califications = questionByArea.map(cal => { return cal.calification });
-  const score = califications.reduce((total, calification) => { return total + calification });
-  const calification = score / califications.length;
-  return calification;
+function calculateAverages(values) {
+  if (!values.length) {
+    return 0;
+  }
+  const score = values.reduce((total, value) => { return total + value });
+  const totalValue = score / values.length;
+  return totalValue;
+}
 
+async function areasAverages() {
+  let areas = await Area.find();
+  
+  if(!areas.length) return false;
+  areas.forEach(area => {
+    area.averages.forEach(async average => {
+      
+      let students = await Student.find({age: {$gt: average.age1-1, $lt: average.age2+1}});
+      var value;
+      
+      if (students.length) {
+        const valuesByStudent = await getStudentsAverages(area._id, students);
+        value = calculateAverages(valuesByStudent);
+      }
+      else
+        value = 0;
+      
+      await Area.updateOne({'averages._id': average._id}, {$set: {'averages.$.value': value}});
+    });
+  });
+  return true;
+}
+
+
+async function getStudentsAverages(idArea, students) {
+  
+  const averagesStudents = [];
+  for (let index = 0; index < students.length; index++) {
+    students[index].averages.forEach(average => {
+      if(average.area.toString() === idArea.toString()){
+        averagesStudents.push(average.value);
+      }
+    });
+  }
+  return averagesStudents;
 }
 
 async function getStudentsNames(req, res){

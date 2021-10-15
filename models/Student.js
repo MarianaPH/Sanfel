@@ -27,7 +27,7 @@ const StudentSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'questions'
       },
-      calification: {
+      value: {
         type: Number,
         min: 1,
         max: 5,
@@ -37,10 +37,10 @@ const StudentSchema = new mongoose.Schema({
   averages: [
     {
       area: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         required: true
       },
-      average: {
+      value: {
         type: Number,
         required: true
       }

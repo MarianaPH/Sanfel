@@ -7,11 +7,15 @@ const AreaSchema = new mongoose.Schema({
   },
   averages: [
     {
-      range: {
-        type: String,
+      age1: {
+        type: Number,
         required: true
       },
-      average: {
+      age2: {
+        type: Number,
+        required: true
+      },
+      value: {
         type: Number
       }
     }

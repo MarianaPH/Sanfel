@@ -5,6 +5,10 @@ async function registerQuestion(req, res) {
   try {
 
     const result = await registerSchemaQuestion.validateAsync(req.body);
+    var question = await Question.findOne({ text: result.text });
+    if (question){
+      return res.status(400).json({ errors: [{ msg: "Question already exists" }] });
+    }
 
     question = new Question({
       text: result.text,

@@ -17,7 +17,8 @@ const registerSchemaStudent = Joi.object({
   sex: Joi.string(),
   age: Joi.number().required(),
   workshops: Joi.array().required(),
-  questions: Joi.array().required()
+  questions: Joi.array().required(),
+  averages: Joi.array()
 });
 
 const editSchemaStudent = Joi.object({
@@ -39,7 +40,12 @@ const registerSchemaWorkshop = Joi.object({
 
 const registerSchemaArea = Joi.object({
   description: Joi.string().required(),
-  averages: Joi.array()
+  averages: Joi.array().items(
+    Joi.object({
+      age1: Joi.number().required(),
+      age2: Joi.number().required()
+    })
+    )
 });
 
 module.exports = {

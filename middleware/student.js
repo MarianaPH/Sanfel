@@ -8,9 +8,7 @@ async function validateStudent(req, res){
     
     const result = await registerSchemaStudent.validateAsync(req.body);
     var student = await Student.findOne({ email: result.email });
-    if (student){
-      return res.status(400).json({ errors: [{ msg: "Student already exists" }] });
-    }
+    if (student) return res.status(400).json({ errors: [{ msg: "Student already exists" }]});
 
     const questions = result.questions;
     

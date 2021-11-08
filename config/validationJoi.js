@@ -1,12 +1,13 @@
 const Joi = require("joi");
 
-const registerSchemaAdmin = Joi.object({
+const registerSchemaUser = Joi.object({
   name: Joi.string().required(),
   email: Joi.string().email().required(),
-  password: Joi.string().min(6).required()
+  password: Joi.string().min(6).required(),
+  role: Joi.string().required()
 });
 
-const loginSchemaAdmin = Joi.object({
+const loginSchemaUser = Joi.object({
   email: Joi.string().email().required(),
   password: Joi.string().min(6).required()
 });
@@ -31,29 +32,35 @@ const editSchemaStudent = Joi.object({
 
 const registerSchemaQuestion = Joi.object({
   text: Joi.string().required(),
-  area: Joi.string().required()
+  subarea: Joi.string().required()
 });
 
 const registerSchemaWorkshop = Joi.object({
   description: Joi.string().required()
 });
 
-const registerSchemaArea = Joi.object({
+const registerSchemaSubarea = Joi.object({
   description: Joi.string().required(),
   averages: Joi.array().items(
     Joi.object({
       age1: Joi.number().required(),
       age2: Joi.number().required()
     })
-    )
+  ),
+  area: Joi.string().required() 
+});
+
+const registerSchemaArea = Joi.object({
+  description: Joi.string().required()
 });
 
 module.exports = {
-  registerSchemaAdmin,
-  loginSchemaAdmin,
+  registerSchemaUser,
+  loginSchemaUser,
   registerSchemaStudent,
   editSchemaStudent,
   registerSchemaQuestion,
   registerSchemaWorkshop,
+  registerSchemaSubarea,
   registerSchemaArea
 };

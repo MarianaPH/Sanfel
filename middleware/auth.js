@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const config = require('config');
-const Admin = require("../models/Admin");
+const User = require("../models/User");
 
 function auth (req, res, next) {
     //Get token from header
@@ -10,21 +10,20 @@ function auth (req, res, next) {
     if (!token) {
         return res.status(401).json({ msg: 'No token, authorization denied'});
     }
-1 
     //Verify token
     try {
         const decoded = jwt.verify(token, config.get('jwtSecret'));
-        req.admin = decoded.admin;
+        req.user = decoded.user;
         next();
     } catch (error) {
         res.status(401).json({ msg: 'Token is not valid'});
     }
 }
 
-async function authAdmin(req, res){
+async function authUser(req, res){
     try{
-        const admin = await Admin.findById(req.admin.id).select('-password');
-        res.json(admin);
+        const user = await User.findById(req.user.id).select('-password');
+        res.json(user);
         return true;
       }catch (error){
         console.error(error.message);
@@ -32,7 +31,22 @@ async function authAdmin(req, res){
       }
 }
 
+const authPage = permissions => {
+  return async (req, res, next) =>{
+    const userRole = await User.findById(req.user.id);
+    if (permissions.includes(userRole.role)) {
+      next();
+    }
+    else {
+      res.status(401).send('Authorization denied');
+    }
+  }
+}
+
+ 
+
 module.exports = {
-    auth,
-    authAdmin
+  auth,
+  authUser,
+  authPage
 }

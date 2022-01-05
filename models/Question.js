@@ -5,9 +5,26 @@ const QuestionSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  subarea: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'subareas'
+  },
   area: {
     type: mongoose.Schema.Types.ObjectId,
+    ref: 'areas',
     required: true
+  },
+  factorResiliente: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref:'subareas',
+  },
+  competenciasAsociadas: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref:'subareas',
+  },
+  dominiosInteligencias: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref:'subareas',
   }
 });
 

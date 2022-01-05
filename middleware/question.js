@@ -5,14 +5,27 @@ async function registerQuestion(req, res) {
   try {
 
     const result = await registerSchemaQuestion.validateAsync(req.body);
-    var question = await Question.findOne({ text: result.text });
+    var question = await Question.findOne(
+      { text: result.text }
+    );
+
     if (question){
-      return res.status(400).json({ errors: [{ msg: "Question already exists" }] });
+      return res.status(400).json(
+        { errors: 
+          [
+            { msg: "Question already exists" }
+          ]
+        }
+      );
     }
 
     question = new Question({
       text: result.text,
-      area: result.area
+      subarea: result.subarea,
+      area: result.area,
+      factorResiliente: result.factorResiliente,
+      competenciasAsociadas: result.competenciasAsociadas,
+      dominiosInteligencias: result.dominiosInteligencias
     });
 
     await question.save();

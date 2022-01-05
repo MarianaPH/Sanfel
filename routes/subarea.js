@@ -7,6 +7,6 @@ const {auth} = require ('../middleware/auth');
 //@route      POST api/subarea
 //@desc       Register subarea
 //access      Private
-router.post('/', auth, registerSubarea);
+router.post('/register', /*auth,*/ registerSubarea);
 
 module.exports = router;

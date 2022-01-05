@@ -1,4 +1,4 @@
-const Joi = require("joi");
+const Joi = require('joi-oid');
 
 const registerSchemaUser = Joi.object({
   name: Joi.string().required(),
@@ -12,27 +12,31 @@ const loginSchemaUser = Joi.object({
   password: Joi.string().min(6).required()
 });
 
-const registerSchemaStudent = Joi.object({
+const registerSchemaRegistrant = Joi.object({
   name: Joi.string().required(),
   email: Joi.string().email().required(),
-  sex: Joi.string(),
-  age: Joi.number().required(),
-  workshops: Joi.array().required(),
-  questions: Joi.array().required(),
-  averages: Joi.array()
+  age: Joi.number()/*.required()*/,
+  sex: Joi.string()/*.required()*/,
+  workshops: Joi.array(),
+  questionsByArea: Joi.array(),
+  averagesByArea: Joi.array()
 });
 
 const editSchemaStudent = Joi.object({
   name: Joi.string().required(),
   email: Joi.string().email().required(),
-  sex: Joi.string().required(),
-  age: Joi.number().required(),
+  sex: Joi.string()/*.required()*/,
+  age: Joi.number()/*.required()*/,
   workshops: Joi.array().required()
 });
 
 const registerSchemaQuestion = Joi.object({
   text: Joi.string().required(),
-  subarea: Joi.string().required()
+  subarea: Joi.string(),
+  area: Joi.required(),
+  factorResiliente: Joi.objectId(),
+  competenciasAsociadas: Joi.objectId(),
+  dominiosInteligencias: Joi.objectId()
 });
 
 const registerSchemaWorkshop = Joi.object({
@@ -43,11 +47,10 @@ const registerSchemaSubarea = Joi.object({
   description: Joi.string().required(),
   averages: Joi.array().items(
     Joi.object({
-      age1: Joi.number().required(),
-      age2: Joi.number().required()
+      age1: Joi.number(),
+      age2: Joi.number()
     })
-  ),
-  area: Joi.string().required() 
+  )
 });
 
 const registerSchemaArea = Joi.object({
@@ -57,7 +60,7 @@ const registerSchemaArea = Joi.object({
 module.exports = {
   registerSchemaUser,
   loginSchemaUser,
-  registerSchemaStudent,
+  registerSchemaRegistrant,
   editSchemaStudent,
   registerSchemaQuestion,
   registerSchemaWorkshop,

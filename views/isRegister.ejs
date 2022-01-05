@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="../../dist/css/bootstrap.css" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Registro</title>
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../dist/css/bootstrap.css"></script>
+    <div class="animate">
+        <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-dark animate" role="navigation">
+            <a class="navbar-brand" href=""><img src="../dist/images/Circular PNG.png" alt="Logo"> REGISTRO</a>
+        </nav>
+    </div>
+    <form>
+        <table width="50%" align="center"><br><br>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="name">Nombre Completo</label>
+                        <input type="text" class="form-control" id="name" placeholder="Nombre Completo">
+                      </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="email">Correo Electronico</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Correo Electronico">
+                      </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="test">Cuestionario</label>
+                        <select class="form-control" id="test">
+                          <option value="">- -</option>
+                          <option value="6193ef47864700f0411845d1" name="IntelMulti">Inteligencias Multiples</option>
+                          <option value="6193ef73864700f0411845d7" name="ninosResilientes">Niños Resilientes</option>
+                          <option value="6193ef63864700f0411845d4" name="lideresComunitarios">Líderes Comunitarios</option>
+                          <option value="6193ee5a864700f0411845cd" name="crianzaPositiva">Crianza Positiva</option>
+                        </select>
+                      </div>
+                </td>
+            </tr>
+        </table>
+      </form>
+      <div style="text-align: center;" class="container">
+        <button  class="btn btn-primary" onclick="isRegistered()">Enviar</button>
+      </div>
+      <!-- <button  class="btn btn-primary" onclick="isRegistered()">Submit</button> -->
+      <script defer src="/public/routes.js"></script>
+      <script defer src="/public/forms.js"></script>
+</body>
+</html>

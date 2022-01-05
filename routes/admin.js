@@ -9,5 +9,7 @@ const {auth, authPage} = require ('../middleware/auth');
 router.post("/", auth, authPage(["admin"]), validationUser);
 
 
+
+
 module.exports = router;
 

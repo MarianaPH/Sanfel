@@ -3,16 +3,23 @@ const router = express.Router();
 const {auth, authUser} = require ('../middleware/auth');
 const {validationUser} = require('../middleware/admin');
 
+//@route      POST api/admin
+//@desc       Load Admin 
+//access      Private
+router.get('/auth', auth, authUser,);
 
 //@route      POST api/admin
 //@desc       Load Admin 
 //access      Private
-router.get('/', auth, authUser);
+router.get("/dashboard", (req, res) => {
+  res.render('index.ejs');
+});
+
 
 //@route      POST api/admin
 //@desc       Authenticate user & get token
 //access      Public
-router.post('/', validationUser);
+router.post('/validate', validationUser);
 
 
 module.exports = router;

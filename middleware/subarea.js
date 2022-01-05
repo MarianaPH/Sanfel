@@ -5,14 +5,22 @@ async function registerSubarea(req, res) {
   try {
 
     const result = await registerSchemaSubarea.validateAsync(req.body);
-    var subarea = await Subarea.findOne({ description: result.description });
+    var subarea = await Subarea.findOne(
+      { description: result.description }
+    );
+
     if (subarea){
-      return res.status(400).json({ errors: [{ msg: "Subarea already exists" }] });
+      return res.status(400).json(
+        { errors: 
+          [
+            { msg: "Subarea already exists" }
+          ]
+        }
+      );
     }
 
     subarea = new Subarea({
-      description: result.description,
-      averages: result.averages
+      description: result.description
     });
     await subarea.save();
 

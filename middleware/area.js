@@ -5,14 +5,22 @@ async function registerArea(req, res) {
   try {
 
     const result = await registerSchemaArea.validateAsync(req.body);
-    var area = await Area.findOne({ description: result.description });
+    var area = await Area.findOne(
+      { description: result.description }
+    );
+
     if (area){
-      return res.status(400).json({ errors: [{ msg: "Area already exists" }] });
+      return res.status(400).json(
+        { errors: 
+          [
+            { msg: "Area already exists" }
+          ]
+        }
+      );
     }
 
     area = new Area({
-      description: result.description,
-      averages: result.averages
+      description: result.description
     });
     await area.save();
 

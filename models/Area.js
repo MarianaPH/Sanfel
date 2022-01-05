@@ -5,6 +5,9 @@ const AreaSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  timesAnswered: {
+    type: Number
+  }
 });
 
 module.exports = Area = mongoose.model('area', AreaSchema)

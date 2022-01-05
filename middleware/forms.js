@@ -1,6 +1,8 @@
 const Registrant = require('../models/Registrant');
+const Area = require('../models/Area');
 const Question = require('../models/Question');
 const mongoose = require('mongoose');
+const { findById } = require('../models/Area');
 
 async function saveAnswers(req, res) {
   const answer = {};
@@ -37,11 +39,26 @@ async function saveAnswers(req, res) {
       {new: true}
     );
     
+    sumTimesAnswered(answer.areaId);
+    
     res.json({ msg : 'Cuestionario contestado exitosamente.' });
   } catch (error) {
     console.log(error.message);
     res.status(500).send("Server error");
   }
+}
+
+async function sumTimesAnswered(areaId) {
+  let area = await Area.findById( areaId );
+  
+  sumTA = area.timesAnswered + 1;
+  console.log(sumTA);
+  let areaTA = await Area.findOneAndUpdate(
+    {_id: areaId},
+    {timesAnswered: sumTA },
+    {new: true}
+  )
+  console.log(areaTA);
 }
 
 module.exports ={

@@ -54,7 +54,8 @@ const registerSchemaSubarea = Joi.object({
 });
 
 const registerSchemaArea = Joi.object({
-  description: Joi.string().required()
+  description: Joi.string().required(),
+  timesAnswered: Joi.number()
 });
 
 module.exports = {

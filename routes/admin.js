@@ -8,6 +8,12 @@ const {auth, authPage} = require ('../middleware/auth');
 //access      Private
 router.post("/", auth, authPage(["admin"]), validationUser);
 
+//@route      GET api/admin/records
+//@desc       Render records
+//access      Private
+router.get("/dashboard", (req, res) => {
+  res.render('index.ejs');
+});
 
 
 

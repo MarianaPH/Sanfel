@@ -8,8 +8,8 @@ const {validationUser} = require('../middleware/admin');
 //access      Private
 router.get('/auth', auth, authUser,);
 
-//@route      POST api/admin
-//@desc       Load Admin 
+//@route      GET api/admin
+//@desc       Render index 
 //access      Private
 router.get("/dashboard", (req, res) => {
   res.render('index.ejs');

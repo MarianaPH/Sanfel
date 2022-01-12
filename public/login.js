@@ -46,8 +46,8 @@ async function validateToken(token) {
   const options = {
     method: "GET",
     headers: {
-      "x-auth-token": token,
-    }
+        "x-auth-token": token,
+      }
   };
 
   try {
@@ -60,7 +60,6 @@ async function validateToken(token) {
     }
     else window.location.replace(route + "dashboard");
 
-
   } catch (error) {
     console.log(error);
   }
@@ -69,6 +68,7 @@ async function validateToken(token) {
 async function tokenExists() {
   const token = sessionStorage.getItem("token");
   if (!token) {
+    console.log('token')
     window.location.replace(route + "login");
   }
 }

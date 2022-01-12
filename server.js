@@ -22,7 +22,7 @@ app.use("/login", require('./routes/login'));
 app.use("/", require('./routes/auth'));
 app.use("/forms", require('./routes/forms'));
 app.use("/api/admin", require('./routes/admin'));
-app.use("/api/registrant", require('./routes/registrant'));
+app.use("/registrant", require('./routes/registrant'));
 app.use("/api/workshops", require('./routes/workshop'));
 app.use("/api/questions", require('./routes/question'));
 app.use("/api/areas", require('./routes/area'));

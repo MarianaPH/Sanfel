@@ -1,4 +1,6 @@
 const {registerSchemaRegistrant, editSchemaStudent} = require('../config/validationJoi');
+const xlsx = require('xlsx');
+const path = require('path');
 const Question = require('../models/Question');
 const Registrant = require('../models/Registrant');
 const Area = require('../models/Area');
@@ -97,7 +99,57 @@ function monthDiff(d1, d2) {
   return months <= 0 ? 0 : months;
 }
 
+async function getRegistrants(){
+  try {
+
+    const registrant = await Registrant.find({}, {name : 1, email: 1});
+
+    console.log(registrant)
+    return registrant;
+
+  } catch (error) {
+    console.error(error.message);
+    let status = 500;
+    return status;
+  }
+}
+
+async function getInfo() {
+  const workSheetColumnName = [
+    "Id",
+    "Name",
+    "Email"
+  ]
+  const users = await getRegistrants();
+  const workSheetName = 'Users';
+  const filePath = './Files/excel-from-js.xlsx';
+
+
+  exportUsersToExcel(users, workSheetColumnName, workSheetName, filePath);
+}
+
+function exportUsersToExcel(users, workSheetColumnNames, workSheetName, filePath) {
+  const data = users.map(user => {
+    return [user.id, user.name, user.email];
+  });
+  exportExcel(data, workSheetColumnNames, workSheetName, filePath);
+}
+
+function exportExcel(data, workSheetColumnNames, workSheetName, filePath) {
+  const workBook = xlsx.utils.book_new();
+    const workSheetData = [
+        workSheetColumnNames,
+        ... data
+    ];
+    const workSheet = xlsx.utils.aoa_to_sheet(workSheetData);
+    xlsx.utils.book_append_sheet(workBook, workSheet, workSheetName);
+    xlsx.writeFile(workBook, path.resolve(filePath));
+}
+
+
 module.exports = {
   validateRegister,
-  registration
+  registration,
+  getRegistrants,
+  getInfo
 }

@@ -77,7 +77,7 @@ async function validationUser(req, res){
     jwt.sign(
       payload,
       config.get("jwtSecret"),
-      { expiresIn: 7200 },
+      { expiresIn: 3600 },
       (error, token) => {
         if (error) throw error;
         return res.json(

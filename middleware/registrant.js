@@ -122,7 +122,8 @@ async function getInfo() {
   ]
   const users = await getRegistrants();
   const workSheetName = 'Users';
-  const filePath = './Files/excel-from-js.xlsx';
+  const date = new Date();
+  const filePath = './Files/excel-from-' + date + '.xlsx';
 
 
   exportUsersToExcel(users, workSheetColumnName, workSheetName, filePath);

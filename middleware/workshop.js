@@ -5,23 +5,11 @@ async function registerWorkshop(req, res) {
   try {
 
     const result = await registerSchemaWorkshop.validateAsync(req.body);
-
-    var workshop = await Workshop.findOne(
-      { description: result.description }
-    );
-
-    if (workshop){
-      return res.status(400).json(
-        { errors: 
-          [
-            { msg: "Workshop already exists" }
-          ]
-        }
-      );
-    }
+    var workshop;
     
     workshop = new Workshop({
-      description: result.description
+      description: result.description,
+      online: result.online
     });
 
     await workshop.save();

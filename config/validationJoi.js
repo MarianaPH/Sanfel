@@ -40,7 +40,8 @@ const registerSchemaQuestion = Joi.object({
 });
 
 const registerSchemaWorkshop = Joi.object({
-  description: Joi.string().required()
+  description: Joi.string().required(),
+  online: Joi.boolean().required()
 });
 
 const registerSchemaSubarea = Joi.object({

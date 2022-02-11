@@ -13,11 +13,27 @@ const loginSchemaUser = Joi.object({
 });
 
 const registerSchemaRegistrant = Joi.object({
-  name: Joi.string().required(),
+  nombre: Joi.string().required(),
+  apellidos: Joi.string().required(),
+  fechaNacimiento: Joi.date().required(),
+  edad: Joi.number().required(),
+  sexo: Joi.string().required(),
+  curp: Joi.string().required(),
+  escolaridad: Joi.string().required(),
+  nombreTutor: Joi.string().required(),
+  parentesco: Joi.string().required(),
   email: Joi.string().email().required(),
-  age: Joi.number()/*.required()*/,
-  sex: Joi.string()/*.required()*/,
-  workshops: Joi.array(),
+  numeroTelefonico: Joi.string().required(),
+  pais: Joi.array(),
+  colonia: Joi.string().allow(null, ''),
+  alcaldia: Joi.string().allow(null, ''),
+  estado: Joi.array(),  
+  talleres: Joi.allow(null),
+  alcance: Joi.string().required(),
+  serviciosBasicos: Joi.allow(null),
+  situacionesRiesgo: Joi.allow(null),
+  nivelRiesgoVivienda: Joi.string().required(),
+  tipoVivienda: Joi.string().required(),
   questionsByArea: Joi.array(),
   averagesByArea: Joi.array()
 });

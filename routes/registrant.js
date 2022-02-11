@@ -6,7 +6,10 @@ const router = express.Router();
 // @route          POST api/registered
 // @description    Register user
 // @access         Public
-router.post('/register', auth,registration );
+router.post('/registerUser', (req, res) =>{
+  registration(req, res);
+  // console.log(req.body);
+});
 
 
 // @route          POST api/isRegistered
@@ -17,8 +20,8 @@ router.post('/isRegistered/:area_id', validateRegister);
 // @route          GET api/records
 // @description    Render form intelMulti
 // @access         Public
-router.get("/records", (req, res) => {
-  res.render('records.ejs');
+router.get("/registration", (req, res) => {
+  res.render('registration.ejs');
 });
 
 // @route         Get records

@@ -1,7 +1,35 @@
 const mongoose = require('mongoose');
 
 const RegistrantSchema = new mongoose.Schema({
-  name: {
+  nombre: {
+    type: String,
+    required: true
+  },
+  apellidos: {
+    type:String,
+    required: true
+  },
+  fechaNacimiento: {
+    type: Date,
+    required: true
+  },
+  edad: {
+    type: Number,
+    required: true
+  },
+  sexo:{
+    type: String,
+    required: true
+  },
+  escolaridad: {
+    type: String,
+    required: true
+  },
+  nombreTutor: {
+    type: String,
+    required: true
+  },
+  parentesco: {
     type: String,
     required: true
   },
@@ -9,15 +37,43 @@ const RegistrantSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  age: {
-    type: Number,
-    // required: true
-  },
-  sex:{
+  numeroTelefonico: {
     type: String,
-    // required: true
+    required: true
   },
-  workshops:{
+  pais: {
+    type: String,
+    required: true
+  },
+  colonia: {
+    type: String,
+  },
+  alcaldia: {
+    type: String,
+  },
+  estado: {
+    type: String,
+    required: true
+  },
+  serviciosBasicos: {
+    type: [String],
+  },
+  situacionesRiesgo: {
+    type: [String],
+  },
+  nivelRiesgoVivienda: {
+    type: String,
+    required: true
+  },
+  tipoVivienda: {
+    type: String,
+    required: true
+  },
+  alcance: {
+    type: String,
+    required: true
+  },
+  talleres:{
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'workshops'
    },

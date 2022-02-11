@@ -54,6 +54,7 @@ async function validateRegister(req, res) {
 
 async function registration(req, res) {
   try {
+    console.log(req.body);
     const result = await registerSchemaRegistrant.validateAsync(req.body);
 
     var registrant = await Registrant.findOne(
@@ -68,15 +69,34 @@ async function registration(req, res) {
       }
     );
 
+    const values = validateLivingPlace(result);
+    console.log(values.talleres);
+
     var registrant = new Registrant({
-      name: result.name,
-      email: result.email,
-      // age: result.age,
-      // sex: result.sex,
-      // workshops: result.workshops,
-      // questions: result.questions,
-      // averages: averages
+      nombre: result.nombre,
+      apellidos: result.apellidos,
+      fechaNacimiento: result.fechaNacimiento,
+      edad: result.edad,
+      sexo: result.sexo,
+      curp: result.curp,
+      escolaridad: result.escolaridad,
+      nombreTutor: result.nombreTutor,
+      parentesco: result.parentesco,
+      email:result.email,
+      numeroTelefonico: result.numeroTelefonico,
+      pais: values.pais,
+      colonia: values.colonia,
+      alcaldia: values.alcaldia,
+      estado: values.estado,
+      talleres: values.talleres,
+      alcance: result.alcance,
+      serviciosBasicos: values.serviciosBasicos,
+      situacionesRiesgo: values.situacionesRiesgo,
+      nivelRiesgoVivienda: result.nivelRiesgoVivienda,
+      tipoVivienda: result.tipoVivienda
     });
+
+    console.log(registrant);
 
     await registrant.save();
 
@@ -88,6 +108,36 @@ async function registration(req, res) {
     }
     console.log(error.message);
     res.status(500).send("Server error");
+  }
+}
+
+function validateLivingPlace(result) {
+  (result.talleres) ? talleres = result.talleres : talleres = null;
+
+  (result.serviciosBasicos) ? serviciosBasicos = result.serviciosBasicos : serviciosBasicos = null;
+
+  (result.situacionesRiesgo) ? situacionesRiesgo = result.situacionesRiesgo : situacionesRiesgo = null;
+
+  if (result.pais[0] == 'México') {
+    pais = result.pais[0];
+    colonia = result.colonia;
+    alcaldia = result.alcaldia;
+    estado = result.estado[0]
+  }else{
+    pais = result.pais[1];
+    estado = result.estado[1]
+    colonia = '';
+    alcaldia = '';
+  }
+  
+  return {
+    talleres: talleres,
+    serviciosBasicos: serviciosBasicos,
+    situacionesRiesgo: situacionesRiesgo,
+    pais: pais,
+    colonia: colonia,
+    alcaldia: alcaldia,
+    estado: estado
   }
 }
 

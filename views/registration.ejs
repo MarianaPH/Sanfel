@@ -1,74 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="../dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../dist/css/bootstrapnew.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script defer src="../dist/navbar/js/popper.min.js"></script>
     <title>Registro</title>
 </head>
-
 <body onload="tokenExists()" style="opacity:0;">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="../dist/js/bootstrap.js"></script>
-   <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
-  <div id="wrapper" class="animate">
-    <nav class="navbar navbar-fixed-top navbar-expand-lg  navbar-dark bg-dark">
-      <a class="navbar-brand" href="http://localhost:5002/dashboard"><img src="../dist/images/Circular PNG.png" alt="Logo"> SANFEL</a>
-       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-      
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav ml-md-auto d-md-flex">
-          <li class="nav-item">
-            <a class="nav-link" href="http://localhost:5002/dashboard">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-        </ul>
-        <ul class="navbar-nav ml-md-4 d-md-flex">
-          <li class="nav-item">
-            <a class="nav-link" onclick="downloadInfo()" href=""> Descargar-Reporte</a>
-          </li>
-        </ul>
-        <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Administración
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu dropdown-menu-sm">
-            <li class="mb-1"><a href="http://localhost:5002/registrant/registration">Registros</a></li>
-            <li class="mb-1"><a href="#">Preguntas</a></li>
-            <li class="mb-1"><a href="#">Talleres</a></li>
-            <li class="mb-1"><a href="#">Administradores</a></li>
-          </ul>
-        </div>
-        <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Inscripciones
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu ">
-            <li class="mb-1"><a href="#">Registro Talleres</a></li>
-            <li class="mb-1"><a href="#">Cursos de Verano</a></li>
-            <li class="mb-1"><a href="#">Padres, Cuidadores y Tutores</a></li>
-            <li class="mb-1"><a href="#">Salud Emocional</a></li>
-          </ul>
-        </div>
-        <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Instrumentos
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li class="mb-1"><a href="http://localhost:5002/forms/non-functional/crianzaPositiva" onclick="">Crianza Positiva</a></li>
-            <li class="mb-1"><a href="http://localhost:5002/forms/non-functional/intelMulti">Inteligencias Multiples</a></li>
-            <li class="mb-1"><a href="http://localhost:5002/forms/non-functional/lideresComunitarios">Lideres Comunitarios</a></li>
-            <li class="mb-1"><a href="http://localhost:5002/forms/non-functional/ninosResilientes">Niños Resilientes</a></li>
-          </ul>
-        </div>
-      </div>          
-    </nav>
-  </div> 
-
+  
+  <%-include("Navbar.ejs"); %>
 
   <div class="container mt-5">
-    
     <form id="registerForm" class="needs-validation" method="post"  action="http://localhost:5002/registrant/registerUser" novalidate>
       <h2 class="text-center">
         <small class="">Datos del inscrito (a)</small>
@@ -77,12 +20,12 @@
       <div class="row justify-content-center mx-auto">
         <div class="col-sm-9 col-lg-4 text-muted mb-4">
           <label class="text-muted" for="name">Nombre(s):</label>
-          <input type="text" class="form-control" id="name" name="nombre" required>
+          <input type="text" class="form-control " id="name" name="nombre" required>
           <p class="invalid-feedback">Campo Obligatorio</p>
         </div>
         <div class="col-sm-9 col-lg-5 mb-4">
           <label class="text-muted" for="lastname">Apellidos</label>
-          <input type="text" class="form-control" id="lastname" name="apellidos" required>
+          <input type="text" class="form-control " id="lastname" name="apellidos" required>
           <p class="invalid-feedback">Campo Obligatorio</p>
         </div>
       </div>
@@ -90,12 +33,12 @@
       <div class="row justify-content-center mx-auto">
         <div class="mb-3 col-sm-9 col-lg-3">
           <label class="text-muted" for="date">Fecha de nacimiento:</label>
-          <input type="date" class="form-control" min="1922-01-01" max="2022-12-31" aria-label="Amount" aria-describedby="birthDateInputGroup" id="birthDate" name="fechaNacimiento" required>
+          <input type="date" class="form-control " min="1922-01-01" max="2022-12-31" aria-label="Amount" aria-describedby="birthDateInputGroup" id="birthDate" name="fechaNacimiento" required>
           <p class="invalid-feedback">Campo Obligatorio</p>
         </div>
         <div class="mb-3 col-sm-7 col-lg-3">
           <label class="text-muted" for="age">Edad:</label>
-          <input type="number" class="form-control" min="0" aria-label="Amount" aria-describedby="ageInputGroup" id="age" name="edad" required>
+          <input type="number" class="form-control " min="0" aria-label="Amount" aria-describedby="ageInputGroup" id="age" name="edad" required>
           <p class="invalid-feedback">Campo Obligatorio</p>
         </div>
         <div class="mb-3 col-sm-2  col-lg-3">
@@ -115,12 +58,12 @@
       <div class="row justify-content-center mx-auto mb-4">
         <div class="col-sm-9 col-lg-4 mb-4">
           <label class="text-muted" for="curp">CUPR:</label>
-          <input type="text" class="form-control" id="curp" name="curp" required>
+          <input type="text" class="form-control " id="curp" name="curp" required>
           <p class="invalid-feedback">Campo Obligatorio</p>
         </div>
         <div class="col-sm-9 col-lg-5 mb-4">
           <label class="text-muted" for="escolaridad">Escolaridad: </label>
-          <select class="form-control" id="escolaridad" name="escolaridad" required>
+          <select class="form-control " id="escolaridad" name="escolaridad" required>
             <option value="">- -</option>
             <option value="preescolar">Educación Preescolar</option>
             <option value="primaria">Educación Primaria</option>
@@ -132,7 +75,7 @@
           </select>
           <p class="invalid-feedback">Campo Obligatorio</p>
         </div>
-      </div>
+      </div> 
 
       <h2 class="text-center">
         <small class="">Datos de madre, padre o tutor</small>
@@ -141,12 +84,12 @@
       <div class="row justify-content-center mx-auto">
         <div class="col-sm-9 col-lg-6 mb-4">
           <label class="text-muted" for="tutorName">Nombre de madre, padre o tutor:</label>
-          <input type="text" class="form-control" id="tutorName" name="nombreTutor" required>
+          <input type="text" class="form-control " id="tutorName" name="nombreTutor" required>
           <p class="invalid-feedback">Campo Obligatorio</p>
         </div>
         <div class="col-sm-9 col-lg-3 mb-4">
           <label class="text-muted" for="family" class="form-label">Parentesco con el inscrito: </label><br>
-          <select class="form-control" id="family" name="parentesco" required>
+          <select class="form-control " id="family" name="parentesco" required>
             <option value="">- -</option>
             <option value="Papás">Madre o Padre</option>
             <option value="Abuelos">Abuelos</option>
@@ -160,12 +103,12 @@
       <div class="row justify-content-center mx-auto">
         <div class="col-sm-5 col-lg-4 mb-4">
           <label class="text-muted" for="email">Correo electronico para enviar nuestro boletín de notificaciones y recordatorios: </label>
-          <input type="text" class="form-control" id="email" name="email" required>
+          <input type="text" class="form-control " id="email" name="email" required>
           <p class="invalid-feedback">Campo Obligatorio</p>
         </div>
         <div class="col-sm-4 col-lg-4 mb-4">
           <label class="text-muted" for="cellphoneNumber">Numero celular del padre, madre o tutor para confirmar la inscipción: </label>
-          <input type="tel" class="form-control" id="cellphoneNumber" placeholder="55 5555 5555" name="numeroTelefonico" pattern="[0-9]{2} [0-9]{4} [0-9]{4}" required>
+          <input type="tel" class="form-control " id="cellphoneNumber" placeholder="55 5555 5555" name="numeroTelefonico" pattern="[0-9]{2} [0-9]{4} [0-9]{4}" required>
           <p class="invalid-feedback">Campo Obligatorio. Por favor sigue el formato solicitado(55 5555 5555)</p>
         </div>
       </div>
@@ -173,7 +116,7 @@
       <div class="row justify-content-center mx-auto mb-4" onload="hideForms()">
         <div class="col-sm-9 col-lg-3">
           <label class="text-muted" for="countrySelect" class="form-label">País:</label><br>
-          <select class="form-control" id="countrySelect" onchange="selectLivingPlaceForm()" name="pais" required>
+          <select class="form-control " id="countrySelect" onchange="selectLivingPlaceForm()" name="pais" required>
             <option value="">- -</option>
             <option value="México">México</option>
             <option value="otro">Otro</option>
@@ -185,17 +128,17 @@
       <div class="row justify-content-center mx-auto">
         <div class="col-sm-9 col-lg-3 countryForm mb-4" id="form1-q-1">
           <label class="text-muted" for="colonia">Colonia:</label>
-          <input type="text" class="form-control" id="colonia" name="colonia">
+          <input type="text" class="form-control " id="colonia" name="colonia">
           <p class="invalid-feedback">Campo Obligatorio</p>
         </div>
         <div class="col-sm-9 col-lg-3 countryForm mb-4" id="form1-q-2">
           <label class="text-muted" for="alcaldia">Alcaldía o Municipio:</label>
-          <input type="text" class="form-control" id="alcaldia" name="alcaldia">
+          <input type="text" class="form-control " id="alcaldia" name="alcaldia">
           <p class="invalid-feedback">Campo Obligatorio</p>
         </div>
         <div class="col-sm-9 col-lg-2 countryForm mb-4" id="form1-q-3">
           <label class="text-muted" for="entiestadodad" class="form-label">Entidad Federativa: </label><br>
-          <select class="form-control" id="estado" name="estado">
+          <select class="form-control " id="estado" name="estado">
             <option value="">- -</option>
             <option value="Aguas Calientes">Aguas Calientes</option>
             <option value="Baja California">Baja California</option>
@@ -237,15 +180,15 @@
       <div class="row justify-content-center mx-auto">
         <div class="col-sm-9 col-lg-3 countryForm mb-4" id="form2-q-1">
           <label class="text-muted" for="pais">¿De que país eres?</label>
-          <input type="text" class="form-control" id="pais" name="pais">
+          <input type="text" class="form-control " id="pais" name="pais">
           <p class="invalid-feedback">Campo Obligatorio</p>
         </div>
         <div class="col-sm-9 col-lg-5 countryForm mb-4" id="form2-q-2">
           <label class="text-muted" for="estado">¿En qué Estado, Departamento, Provincia o Región vives?</label>
-          <input type="text" class="form-control" id="estado" name="estado">
+          <input type="text" class="form-control " id="estado" name="estado">
           <p class="invalid-feedback">Campo Obligatorio</p>
         </div>
-      </div>
+      </div> 
 
       <h2 class="text-center mt-4">
         <small>Talleres</small>
@@ -320,7 +263,7 @@
           </select>
           <p class="invalid-feedback">Campo Obligatorio</p>
         </div>
-      </div>
+      </div> 
 
       <h2 class="text-center">
         <small class="">Datos Demográficos</small>
@@ -457,11 +400,23 @@
       </div>
 
       <div style="text-align: center;" class="mt-5">
-        <button type="submit" class="btn btn-primary" onclick="registration()">Submit form</button>
+        <button class="btn btn-primary" onclick="registration()">Submit form</button>
         <p class="invalid-feedback">Campo Obligatorio</p>
       </div>
     </form> 
+    
   </div><br><br><br>
+  <!-- <script>
+    $(".well").mouseenter(
+      function(){
+        $(this).css('background-color','#f5f5f5');
+      });
+    
+     $(".well").mouseleave(
+      function(){
+        $(this).css('background-color','#e83e8c');
+      });
+  </script> -->
   <script defer src="/public/routes.js"></script>
   <script defer src="/public/registrants.js"></script>
   <script defer src="/public/login.js"></script>

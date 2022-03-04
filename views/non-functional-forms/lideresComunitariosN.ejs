@@ -6,11 +6,10 @@
 </head>
 <body onload="tokenExists()" style="opacity:0;">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="../../dist/"></script>
     <script src="../../dist/js/bootstrap.js"></script>
     <div id="wrapper" class="animate">
-        <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-dark animate" role="navigation">
-          <a class="navbar-brand Title" href="http://localhost:5002/dashboard" id="6193ef63864700f0411845d4"><img src="../../dist/images/Circular PNG.png" alt="Logo"> LIDERES COMUNITARIOS</a>
+        <nav class="navbar navbar-fixed-top navbar-expand-xl navbar-dark bg-darkn animate" role="navigation">
+          <a class="navbar-brand" href="http://localhost:5002/dashboard" id="6193ef63864700f0411845d4"><img src="../../dist/images/Circular PNG.png" alt="Logo"> LIDERES COMUNITARIOS</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -24,11 +23,16 @@
                 </a>
               </li>
             </ul>
+            <ul class="navbar-nav ml-md-4 d-md-flex">
+              <li class="nav-item">
+                <button class="btn btn-primary" onclick="downloadInfo()"> Descargar-Reporte</button>
+              </li>
+            </ul>
             <div class="dropdown">
               <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Administración
                 <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Registros</a></li>
+                <ul class="dropdown-menu dropdown-menu-sm">
+                  <li><a href="http://localhost:5002/registrant/registration">Registros</a></li>
                   <li><a href="#">Preguntas</a></li>
                   <li><a href="#">Talleres</a></li>
                   <li><a href="#">Administradores</a></li>
@@ -48,7 +52,7 @@
               <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Instrumentos
               <span class="caret"></span></button>
               <ul class="dropdown-menu">
-                <li><a href="http://localhost:5002/forms/non-functional/crianzaPositiva">Crianza Positiva</a></li>
+                <li><a href="http://localhost:5002/forms/non-functional/crianzaPositiva" onclick="">Crianza Positiva</a></li>
                 <li><a href="http://localhost:5002/forms/non-functional/intelMulti">Inteligencias Multiples</a></li>
                 <li><a href="http://localhost:5002/forms/non-functional/lideresComunitarios">Lideres Comunitarios</a></li>
                 <li><a href="http://localhost:5002/forms/non-functional/ninosResilientes">Niños Resilientes</a></li>
@@ -57,6 +61,18 @@
           </div>          
         </nav>
       </div> 
+
+    <div class="container mt-2">
+      <div class="alert alert-success alert-dismissible" id="alertSuccess">
+        Descarga <strong>exitosa!</strong>
+      </div>
+    </div>
+    <div class="container mt-2">
+      <div class="alert alert-danger alert-dismissible" id="alertDanger">
+        Descarga <strong>Fallida.</strong>
+      </div>
+    </div>
+
     <div class="container">
         <form>
             <table width="50%" align="center">
@@ -1223,6 +1239,7 @@
          </div><br><br><br><br>
     </div>      
     <script defer src="/public/routes.js"></script>
+    <script defer src="/public/registrants.js"></script>
     <script defer src="/public/login.js"></script>
 </body>
 </html>

@@ -17,6 +17,7 @@ async function sendData() {
       }
     }
   }
+  console.log(area[0].id);
   if (answerContainer.length === 2/*questions.length*/ && check.checked) {
 
     var data = {
@@ -78,7 +79,7 @@ async function isRegistered() {
     body: JSON.stringify(data),
   };
   try {
-    const res = await fetch(route + "api/registrant/isRegistered/" + area.value , options);
+    const res = await fetch(route + "registrant/isRegistered/" + area.value , options);
 
     var response = await res.json();
 

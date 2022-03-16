@@ -1,71 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="../dist/css/bootstrap.css" rel="stylesheet">
+    <!-- <link href="../dist/css/bootstrapnew.css" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+    <script defer src="../dist/js/popper.min.js"></script>
     <title>Dashboard</title>
 </head>
 
+
 <body onload="tokenExists()" style="opacity:0;">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="../dist/js/bootstrap.js"></script>
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
-    <div id="wrapper" class="animate">
-        <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark animate">
-          <a class="navbar-brand" href="http://localhost:5002/dashboard"><img src="../dist/images/Circular PNG.png" alt="Logo"> SANFEL</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarText">
-            
-            <ul class="navbar-nav ml-md-auto d-md-flex">
-              <li class="nav-item">
-                <a class="nav-link" href="http://localhost:5002/dashboard">Home
-                  <span class="sr-only">(current)</span>
-                </a>
-              </li>
-            </ul>
-            <ul class="navbar-nav ml-md-4 d-md-flex">
-              <li class="nav-item">
-                <a class="nav-link text-center" onclick="downloadInfo()" href=""> Descargar<br>Reporte</a>
-              </li>
-            </ul>
-            <div class="dropdown">
-              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Administración
-                <span class="caret"></span></button>
-                <ul class="dropdown-menu dropdown-menu-sm">
-                  <li><a href="http://localhost:5002/registrant/registration">Registros</a></li>
-                  <li><a href="#">Preguntas</a></li>
-                  <li><a href="#">Talleres</a></li>
-                  <li><a href="#">Administradores</a></li>
-                </ul>
-            </div>
-            <div class="dropdown">
-              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Inscripciones
-                <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Registro Talleres</a></li>
-                  <li><a href="#">Cursos de Verano</a></li>
-                  <li><a href="#">Padres, Cuidadores y Tutores</a></li>
-                  <li><a href="#">Salud Emocional</a></li>
-                </ul>
-            </div>
-            <div class="dropdown">
-              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Instrumentos
-              <span class="caret"></span></button>
-              <ul class="dropdown-menu">
-                <li><a href="http://localhost:5002/forms/non-functional/crianzaPositiva" onclick="">Crianza Positiva</a></li>
-                <li><a href="http://localhost:5002/forms/non-functional/intelMulti">Inteligencias Multiples</a></li>
-                <li><a href="http://localhost:5002/forms/non-functional/lideresComunitarios">Lideres Comunitarios</a></li>
-                <li><a href="http://localhost:5002/forms/non-functional/ninosResilientes">Niños Resilientes</a></li>
-              </ul>
-            </div>
-          </div>          
-        </nav>
-        
-      </div> 
-      <script defer src="/public/routes.js"></script>
-      <script defer src="/public/registrants.js"></script>
-      <script defer src="/public/login.js"></script>
+    
+    <%-include("Navbar.ejs"); %>
+      
+    <script defer src="/public/routes.js"></script>
+    <script defer src="/public/registrants.js"></script>
+    <script defer src="/public/login.js"></script>
 </body>
+
 </html>

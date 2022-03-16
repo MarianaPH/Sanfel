@@ -3,10 +3,9 @@
     
 <head>
 	<title>Login</title>
-	<link href="../dist/css/bootstrap.css" rel="stylesheet">
+	<link href="../dist/css/bootstrapnew.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="../dist/js/bootstrap.js"></script>
 </head>
 <body>
 	<div class="container h-100">
@@ -17,7 +16,7 @@
 						<img src="../dist/images/Circular PNG.png" class="brand_logo" alt="Logo">
 					</div>
 				</div>
-				<div class="d-flex justify-content-center form_container">
+				<div class="d-flex justify-content-center form_container mb-3">
 					<form>
 						<div class="input-group mb-3">
 							<div class="input-group-append">
@@ -25,17 +24,13 @@
 							</div>
 							<input type="text" name="" class="form-control input_user" value="" id="email" placeholder="correo electronico">
 						</div>
-						<div class="input-group mb-2">
+						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-key"></i></span>
 							</div>
 							<input type="password" name="" class="form-control input_pass" value="" id="password" placeholder="contrasena">
 						</div>
 						<div class="form-group">
-							<div class="custom-control custom-checkbox">
-								<input type="checkbox" class="custom-control-input" id="customControlInline">
-								<label class="custom-control-label" for="customControlInline">Recordarme</label>
-							</div>
 						</div>
 							<div class="d-flex justify-content-center mt-3 login_container">
 				 	<button type="button" name="button" class="btn login_btn" onclick="getAuth()">Login</button>
@@ -45,10 +40,7 @@
 		
 				<div class="mt-4">
 					<div class="d-flex justify-content-center links">
-						¿No tienes una cuenta? Registrate <a href="#" class="ml-2">Sign Up</a>
-					</div>
-					<div class="d-flex justify-content-center links">
-						<a href="#">Forgot your password?</a>
+						<a class="login-forgotPass" href="#">Forgot your password?</a>
 					</div>
 				</div>
 			</div>

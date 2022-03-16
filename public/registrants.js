@@ -1,9 +1,3 @@
-async function downloadInfo() {
-  const res = await fetch(route + "registrant/info");
-  var response = await res.json();
-  console.log(response);
-}
-
 async function selectLivingPlaceForm() {
   var option = document.getElementById('countrySelect').value;
     if(option == 'México')
@@ -27,7 +21,7 @@ async function selectLivingPlaceForm() {
 }
 
 async function registration() {
-  
+  console.log(document.forms[0]);
   console.log('registro' );
 }
 

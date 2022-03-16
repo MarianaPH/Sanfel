@@ -45,31 +45,29 @@ router.get("/crianzaPositiva", (req, res) => {
 // @route          GET non-functional-form/intelMulti
 // @description    Render form intelMult
 // @access         Public
-router.get("/non-functional/intelMulti", (req, res) => {
-  res.render('non-functional-forms/intelMultiN.ejs');
+router.get("/nonfunctional-intelMulti", (req, res) => {
+  res.render('intelMultiN.ejs');
 });
 
 // @route          GET form/ninosResilientes
 // @description    Render form niños resilientes
 // @access         Public
-router.get("/non-functional/ninosResilientes", (req, res) => {
-  res.render('non-functional-forms/NiñosResilientesN.ejs');
+router.get("/nonfunctional-ninosResilientes", (req, res) => {
+  res.render('NiñosResilientesN.ejs');
 });
 
 // @route          GET form/lideresComunitarios
 // @description    Render form lideres comunitarios
 // @access         Public
-router.get("/non-functional/lideresComunitarios", (req, res) => {
-  res.render('non-functional-forms/lideresComunitariosN.ejs');
+router.get("/nonfunctional-lideresComunitarios", (req, res) => {
+  res.render('lideresComunitariosN.ejs');
 });
 
 // @route          GET form/crianzaPositiva
 // @description    Render form crianzaPositiva
 // @access         Public
-router.get("/non-functional/crianzaPositiva", (req, res) => {
-  res.render('non-functional-forms/crianzaPositivaN.ejs');
+router.get("/nonfunctional-crianzaPositiva", (req, res) => {
+  res.render('crianzaPositivaN.ejs');
 });
-
-
 
 module.exports = router;

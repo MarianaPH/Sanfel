@@ -29,11 +29,7 @@ router.get("/registration", (req, res) => {
 // @access        Private
 
 // router.get('/info', getRegistrants);
-router.get('/info', (req, res) => {
-  getInfo();
-  res.json('info');
-  console.log('info');
-});
+router.get('/info', getInfo);
 
 
 

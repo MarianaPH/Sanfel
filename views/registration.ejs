@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="../dist/css/bootstrapnew.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script defer src="../dist/navbar/js/popper.min.js"></script>
+    <script defer src="../dist/js/popper.min.js"></script>
     <title>Registro</title>
 </head>
 <body onload="tokenExists()" style="opacity:0;">
@@ -400,23 +399,12 @@
       </div>
 
       <div style="text-align: center;" class="mt-5">
-        <button class="btn btn-primary" onclick="registration()">Submit form</button>
+        <button class="btn btn-form px-3" onclick="registration()">Enviar</button>
         <p class="invalid-feedback">Campo Obligatorio</p>
       </div>
     </form> 
     
   </div><br><br><br>
-  <!-- <script>
-    $(".well").mouseenter(
-      function(){
-        $(this).css('background-color','#f5f5f5');
-      });
-    
-     $(".well").mouseleave(
-      function(){
-        $(this).css('background-color','#e83e8c');
-      });
-  </script> -->
   <script defer src="/public/routes.js"></script>
   <script defer src="/public/registrants.js"></script>
   <script defer src="/public/login.js"></script>

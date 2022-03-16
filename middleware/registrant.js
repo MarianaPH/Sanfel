@@ -1,7 +1,7 @@
 const {registerSchemaRegistrant, editSchemaStudent} = require('../config/validationJoi');
 const xlsx = require('xlsx');
 const path = require('path');
-const Question = require('../models/Question');
+const Workshop = require('../models/Workshop');
 const Registrant = require('../models/Registrant');
 const Area = require('../models/Area');
 
@@ -32,7 +32,6 @@ async function validateRegister(req, res) {
       monthDifference = 6;
     
     if (monthDifference >= 6) {
-      
       return res.status(200).json(
         {
           msg : 'Succesful validation.'
@@ -100,14 +99,21 @@ async function registration(req, res) {
 
     await registrant.save();
 
-    res.send(registrant);
+    res.json({
+      msg: 'Usuario: ' + registrant.nombre + registrant.apellidos + ', registrado correctamente.'
+    })
+
   } catch (error) {
     if (error.isJoi) {
       console.log(error.message);
-      return res.status(400).send(error.message);
+      return res.status(400).json({
+        msg: error.message
+      })
     }
     console.log(error.message);
-    res.status(500).send("Server error");
+    res.status(500).json({
+      msg: 'Error en el servidor'
+    })
   }
 }
 
@@ -150,12 +156,56 @@ function monthDiff(d1, d2) {
 }
 
 async function getRegistrants(){
+  const registrants = [
+    [],
+    [],
+    [],
+    []
+  ]
   try {
+    const registrant = await Registrant.find({},
+      {
+        nombre : 1, apellidos: 1,  email: 1, sexo: 1, edad: 1, talleres: 1
+      }
+    );
 
-    const registrant = await Registrant.find({}, {name : 1, email: 1});
+    registrant.map(user => {
+      if (user.edad <= 7) {
+        registrants[0].push(user);
+      }
+      else if (user.edad > 7 && user.edad < 13 ) {
+        registrants[1].push(user);
+      }
+      else if (user.edad > 12 && user.edad < 18 ) {
+        registrants[2].push(user);
+      }
+      else {
+        registrants[3].push(user);
+      }
+    });
 
-    console.log(registrant)
-    return registrant;
+    // registrants[0].map(user =>{
+    //   console.log(user);
+    // });
+    // console.log('-----1----');
+
+    // registrants[1].map(user =>{
+    //   console.log(user);
+    // });
+    // console.log('-----2----');
+
+    // registrants[2].map(user =>{
+    //   console.log(user);
+    // });
+    // console.log('-----3----');
+
+    // registrants[3].map(user =>{
+    //   console.log(user);
+    // });
+    // console.log('-----4----');
+
+
+    return registrants;
 
   } catch (error) {
     console.error(error.message);
@@ -164,37 +214,99 @@ async function getRegistrants(){
   }
 }
 
-async function getInfo() {
+async function getInfo(req, res) {
+  var status;
+
+  const workshops = await Workshop.find();
+
   const workSheetColumnName = [
     "Id",
     "Name",
-    "Email"
+    "Email",
+    "Edad",
+    "Sexo",
+    "Talleres"
   ]
   const users = await getRegistrants();
-  const workSheetName = 'Users';
+  const workSheetNames =['5 a 7', '8 a 12', '13 a 17', '18+']
   const date = new Date();
   const filePath = './Files/excel-from-' + date + '.xlsx';
 
+  status = exportUsersToExcel(users, workSheetColumnName, workSheetNames, filePath, workshops);
 
-  exportUsersToExcel(users, workSheetColumnName, workSheetName, filePath);
+  if (status === 200) {
+    return res.json(
+      {
+        msg: 'Descarga exitosa'
+      }
+    )
+  }
+  else {
+    return res.status(500).send(
+      {
+        msg: "Error al descargar"
+      }
+    );
+  }
 }
 
-function exportUsersToExcel(users, workSheetColumnNames, workSheetName, filePath) {
-  const data = users.map(user => {
-    return [user.id, user.name, user.email];
-  });
-  exportExcel(data, workSheetColumnNames, workSheetName, filePath);
+function exportUsersToExcel(users, workSheetColumnNames, workSheetNames, filePath, workshops) {
+  var status;
+  const allData = []
+  for (let index = 0; index < users.length; index++) {
+    const data = users[index].map(registrant =>{  
+
+      talleres = [];
+
+      for (let i = 0; registrant.talleres && i < registrant.talleres.length; i++) {
+        workshops.forEach(workshop => {
+          if (registrant.talleres[i].toString() === workshop._id.toString()) {
+            if (workshop.online) {
+              talleres.push(workshop.description + ' (' + 'online' + ')');
+            }
+            else{
+              talleres.push(workshop.description + ' (' + 'presencial' + ')');
+            }
+          } 
+        });
+      }
+
+      return [
+        registrant.id, 
+        registrant.nombre + ' ' +registrant.apellidos, 
+        registrant.email, 
+        registrant.edad, 
+        registrant.sexo, 
+        [talleres]
+      ];
+    });
+    allData.push(data);
+  }
+  status = exportExcel(allData, workSheetColumnNames, workSheetNames, filePath);
+
+  return status;
 }
 
-function exportExcel(data, workSheetColumnNames, workSheetName, filePath) {
+function exportExcel(allData, workSheetColumnNames, workSheetNames, filePath) {
+  var status;
   const workBook = xlsx.utils.book_new();
-    const workSheetData = [
+
+  try {
+    for (let index = 0; index < allData.length; index++) {
+      const workSheetData = [
         workSheetColumnNames,
-        ... data
-    ];
-    const workSheet = xlsx.utils.aoa_to_sheet(workSheetData);
-    xlsx.utils.book_append_sheet(workBook, workSheet, workSheetName);
+        ... allData[index]
+      ];
+      const workSheet = xlsx.utils.aoa_to_sheet(workSheetData);
+      xlsx.utils.book_append_sheet(workBook, workSheet, workSheetNames[index]);
+    }
     xlsx.writeFile(workBook, path.resolve(filePath));
+    return status = 200;
+
+  } catch (error) {
+    console.log(error);
+    return status = 500;
+  }
 }
 
 

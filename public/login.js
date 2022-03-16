@@ -9,7 +9,7 @@ async function getAuth() {
     }
   }
 
-  console.log(data);
+  // console.log(data);
   const options = {
     method: "POST",
     headers: {
@@ -58,7 +58,7 @@ async function validateToken(token) {
     if (res.status === 401) {
       //validar que pasa 
     }
-    else window.location.replace(route + "dashboard");
+    else window.location.replace(route + "admin/dashboard");
 
   } catch (error) {
     console.log(error);
@@ -67,8 +67,39 @@ async function validateToken(token) {
 
 async function tokenExists() {
   const token = sessionStorage.getItem("token");
-  if (!token) {
+  if (token) {
+    document.body.style.opacity = 1;
+    hideForms();
+  }
+  else{
     console.log('token')
     window.location.replace(route + "login");
+  }
+}
+
+function hideForms() {
+  var countryForms = document.getElementsByClassName("countryForm");
+  document.getElementById('alertSuccess').style.display = "none";
+  document.getElementById('alertDanger').style.display = "none";
+  // console.log(countryForms[0]);
+
+  for (let index = 0; index < countryForms.length; index++) {
+    countryForms[index].style.display = "none"
+  }
+}
+
+async function downloadInfo() {
+  console.log("download")
+  try {
+    const response = await fetch(route + "registrant/info");
+    const res = await response.json();
+    if (response.status === 200) {
+      document.getElementById('alertSuccess').style.display ='block';
+      setTimeout(function(){ document.getElementById('alertSuccess').style.display ='none'}, 3000);
+    }
+    console.log(response);
+    console.log(res);
+  } catch (error) {
+    console.log(error)
   }
 }

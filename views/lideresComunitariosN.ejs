@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+    <script defer src="../dist/js/popper.min.js"></script>
+    <title>Líderes Comunitarios</title>
+</head>
+<body onload="tokenExists()" style="opacity:0;">
+    <%-include("Navbar.ejs"); %>
+
+    <div class="container">
+        <form>
+            <table width="50%" align="center">
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <br><br>
+                            <p style="text-align: justify;">
+                                Lee cuidadosamente cada enunciado y selecciona una opción de respuesta de acuerdo con la escala de valoración. A continuación, se te presenta la escala de valoración con el significado de cada uno de los números:<br><br>
+    
+                                1= Nunca<br>
+                                2= Casi nunca<br>
+                                3= A veces<br>
+                                4= Casi Siempre<br>
+                                5= Siempre<br><br>
+
+                                Recuerda que todas las respuestas son válidas, no existen respuestas buenas o malas, te pedimos que respondas lo más honesto posible
+                            </p>
+                            <br><br>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q1lidComun" id="61bbe232a23e20204b2a2b49" class="questions">1. Admito errores</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ1" id="idq1" value="1" required>
+                                <label class="form-check-label" for="idq1">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ1" id="idq1" value="2">
+                                <label class="form-check-label" for="idq1">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ1" id="idq1" value="3">
+                                <label class="form-check-label" for="idq1">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ1" id="idq1" value="4">
+                                <label class="form-check-label" for="idq1">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ1" id="idq1" value="5">
+                                <label class="form-check-label" for="idq1">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q2lidComun" id="61bbe24fa23e20204b2a2b4c" class="questions">2. Soy firme en lo que creo y lo que pienso</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ2" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ2" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ2" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ2" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ2" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q3lidComun" id="61bbe713a23e20204b2a2b79" class="questions">3. Inspiro confianza con los demás siendo honesto</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ3" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ3" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ3" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ3" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ3" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q4lidComun" id="61bbe520a23e20204b2a2b67" class="questions">4. Tomo riesgos cuando es necesario, teniendo en cuenta las consecuencias</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ4" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ4" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ4" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ4" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ4" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q5lidComun" id="61bbe73ca23e20204b2a2b7c" class="questions">5. Reconozco el esfuerzo de las personas</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ5" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ5" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ5" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ5" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ5" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q6lidComun" id="61bc0049a23e20204b2a2b95" class="questions">6. Muestro respeto hacia formas diferentes de pensar</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ6" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ6" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ6" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ6" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ6" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q7lidComun" id="61bc0061a23e20204b2a2b98" class="questions">7.  Creo en mis habilidades para hacer una diferencia en mi comunidad</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ7" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ7" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ7" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ7" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ7" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q8lidComun" id="61bbe268a23e20204b2a2b4f" class="questions">8. Mantengo y realzo mi amor propio y el de los demás</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ8" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ8" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ8" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ8" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ8" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q9lidComun" id="61bbe541a23e20204b2a2b6a" class="questions">9. Enfrento los problemas con entusiasmo y propongo soluciones</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ9" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ9" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ9" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ9" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ9" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q10lidComun" id="61bbe596a23e20204b2a2b6d" class="questions">10. Tomo la iniciativa y actúo decididamente a través del desarrollo de estrategias</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ10" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ10" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ10" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ10" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ10" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q11lidComun" id="61bbe779a23e20204b2a2b7f" class="questions">11. Desarrollo y ayudo a potenciar las capacidades de las personas</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ11" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ11" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ11" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ11" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ11" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q12lidComun" id="61bc0079a23e20204b2a2b9b" class="questions">12. Disfruto de tomar responsabilidad para mejorar mi comunidad</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ12" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ12" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ12" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ12" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ12" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q13lidComun" id="61bc010fa23e20204b2a2b9e" class="questions">13. Me adapto al ambiente y a la gente</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ13" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ13" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ13" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ13" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ13" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q14lidComun" id="61bbe285a23e20204b2a2b52" class="questions">14. Sé identificar los valores personales con los que actúo</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ14" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ14" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ14" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ14" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ14" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q15lidComun" id="61bbe7a1a23e20204b2a2b82" class="questions">15. Puedo comunicarme de manera correcta en diversos ambientes</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ15" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ15" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ15" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ15" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ15" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q16lidComun" id="61bbe2d3a23e20204b2a2b55" class="questions">16. Acepto retroalimentación y tomo las críticas constructivas para mejorar</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ16" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ16" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ16" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ16" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ16" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q17lidComun" id="61bc0125a23e20204b2a2ba1" class="questions">17. Me gusta trabajar en equipo con personas que tienen diferentes habilidades</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ17" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ17" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ17" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ17" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ17" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q18lidComun" id="61bbe7c1a23e20204b2a2b85" class="questions">18. Delego responsabilidades y tareas</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ18" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ18" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ18" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ18" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ18" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q19lidComun"id="61bbe2eaa23e20204b2a2b58" class="questions">19. Trabajo duro y persistentemente</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ19" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ19" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ19" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ19" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ19" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q20lidComun" id="61bbe7dea23e20204b2a2b88" class="questions">20. Puedo motivar a otras personas a lograr objetivos que nos beneficien a todos</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ20" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ20" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ20" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ20" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ20" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q21lidComun" id="61bbe354a23e20204b2a2b5b" class="questions">21. Sigo con lo que me comprometo</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ21" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ21" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ21" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ21" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ21" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q22lidComun" id="61bc0140a23e20204b2a2ba4" class="questions">22. Ayudo a que la gente sea parte de una red de apoyo</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ22" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ22" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ22" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ22" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ22" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q23lidComun" id="61bbe36da23e20204b2a2b5e" class="questions">23. Controlo mis emociones</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ23" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ23" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ23" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ23" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ23" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q24lidComun" id="61bbe7f2a23e20204b2a2b8b" class="questions">24. Promuevo un ambiente en equipo</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ24" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ24" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ24" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ24" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ24" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q25lidComun" id="61bc0162a23e20204b2a2ba7" class="questions">25. Estoy muy interesado en cómo resolver los problemas que hay en mi comunidad</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ25" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ25" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ25" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ25" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ25" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q26lidComun" id="61bbe389a23e20204b2a2b61" class="questions">26. Actúo con honestidad y seriedad</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ26" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ26" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ26" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ26" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ26" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q27lidComun" id="61bbe612a23e20204b2a2b70" class="questions">27. Transmito optimismo para ir hacia adelante cuando hay incertidumbre y dificultades</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ27" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ27" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ27" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ27" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ27" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q28lidComun" id="61bc0178a23e20204b2a2baa" class="questions">28. Tomo en cuenta las opiniones y participaciones de todos para tomar decisiones</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ28" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ28" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ28" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ28" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ28" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q29lidComun" id="61bbe631a23e20204b2a2b73" class="questions">29. Actúo con calma en tiempos de crisis</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ29" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ29" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ29" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ29" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ29" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q30lidComun" id="61bbe3c5a23e20204b2a2b64" class="questions">30. Me enfoco más en mis fortalezas que en mis debilidades</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ30" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ30" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ30" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ30" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ30" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q31lidComun" id="61bc0185a23e20204b2a2bad" class="questions">31. Puedo dar a entender lo que quiero decir a diferentes personas ajustando mis mensajes</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ31" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ31" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ31" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ31" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ31" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q32lidComun" id="61bbe653a23e20204b2a2b76" class="questions">32. Me adapto y supero los retos cuando los encaro</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ32" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ32" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ32" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ32" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ32" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q33lidComun" id="61bbe831a23e20204b2a2b8e" class="questions">33. Construyo y mantengo relaciones personales</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ33" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ33" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ33" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ33" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ33" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="q34lidComun" id="61bbe854a23e20204b2a2b91" class="questions">34. Escucho diferentes puntos de vista</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group answers">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ34" id="idq2" value="1" required>
+                                <label class="form-check-label" for="idq2">1</label>
+                            </div>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ34" id="idq2" value="2">
+                                <label class="form-check-label" for="idq2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ34" id="idq2" value="3">
+                                <label class="form-check-label" for="idq2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ34" id="idq2" value="4">
+                                <label class="form-check-label" for="idq2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="answersQ34" id="idq2" value="5">
+                                <label class="form-check-label" for="idq2">5</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <a data-toggel="modal" href="https://www.fsanfelipe.org.mx/AvisodePrivacidad.pdf">Leer Aviso de Privacidad</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label>He leído el Aviso de privacidad y lo acepto</label>
+                            <input type="checkbox" id="myCheck" name="privacy" class='aviso' required>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+          </form>
+          <div style="text-align: center;" class="container">
+            <button class="btn btn-form px-3">Enviar</button>
+         </div><br><br><br><br>
+    </div>      
+    <script defer src="/public/routes.js"></script>
+    <script defer src="/public/registrants.js"></script>
+    <script defer src="/public/login.js"></script>
+</body>
+</html>

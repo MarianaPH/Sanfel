@@ -98,6 +98,12 @@ async function validationUser(req, res){
   }
 }
 
+async function getDashboardInfo(req, res ) {
+  const data = await Area.find({}, { _id:0, timesAnswered: 1});
+  return data;
+}
+
 module.exports = {
-  validationUser
+  validationUser,
+  getDashboardInfo
 }

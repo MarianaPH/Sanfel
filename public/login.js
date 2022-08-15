@@ -8,6 +8,7 @@ async function getAuth() {
       password: password
     }
   }
+  
 
   // console.log(data);
   const options = {
@@ -27,17 +28,9 @@ async function getAuth() {
       validateToken(response.token);
       sessionStorage.setItem("token", response.token);
     }
-    else 
-    {
-      swal({
-        title: "Error",
-        text: response.msg,
-        icon: "warning",
-        dangerMode: true,
-        button: "OK"
-      });
-    }
   } catch (error) {
+    document.getElementById('alertDangerLogin').style.display = "inline";
+    setTimeout(function(){ document.getElementById('alertDangerLogin').style.display ='none'}, 3000);
     console.log(error);
   }
 }
@@ -51,14 +44,20 @@ async function validateToken(token) {
   };
 
   try {
-    const res = await fetch(route + "auth", options);
+    var res = await fetch(route + "auth", options);
     var response = await res.json();
-    console.log(response);
-    console.log(res.status)
     if (res.status === 401) {
-      //validar que pasa 
+      //validar que pasa a
     }
-    else window.location.replace(route + "admin/dashboard");
+    else{
+      window.location.replace(route + "admin/dashboard");
+      res = await fetch(route + "admin/dashboardInfo", options);
+      response = await res.json();
+      console.log(response, res);
+      sessionStorage.setItem("data", response);
+
+      //poner en sesion storage
+    } 
 
   } catch (error) {
     console.log(error);
@@ -81,7 +80,13 @@ function hideForms() {
   var countryForms = document.getElementsByClassName("countryForm");
   document.getElementById('alertSuccess').style.display = "none";
   document.getElementById('alertDanger').style.display = "none";
-  // console.log(countryForms[0]);
+  var talleres = document.getElementsByClassName('taller');
+  // talleres[0].style.display = "none";
+
+  
+  for (let index = 0; index < talleres.length; index++) {
+    talleres[index].style.display = "none"; 
+  }
 
   for (let index = 0; index < countryForms.length; index++) {
     countryForms[index].style.display = "none"
@@ -102,4 +107,8 @@ async function downloadInfo() {
   } catch (error) {
     console.log(error)
   }
+}
+
+async function hideAlertLogin() {
+  document.getElementById('alertDangerLogin').style.display = "none";
 }

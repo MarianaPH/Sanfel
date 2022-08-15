@@ -1,6 +1,6 @@
 const express = require("express");
 const {auth} = require ('../middleware/auth');
-const { validateRegister, registration, getInfo  } = require("../middleware/registrant");
+const { validateRegister, registration, getInfo } = require("../middleware/registrant");
 const router = express.Router();
 
 // @route          POST api/registered
@@ -18,18 +18,29 @@ router.post('/registerUser', (req, res) =>{
 router.post('/isRegistered/:area_id', validateRegister);
 
 // @route          GET api/records
-// @description    Render form intelMulti
+// @description    Render child registration form
 // @access         Public
-router.get("/registration", (req, res) => {
-  res.render('registration.ejs');
+router.get("/childRegistration", (req, res) => {
+  res.render('childRegistration.ejs');
 });
+
+// @route          GET api/records
+// @description    Render adult registration form
+// @access         Public
+router.get("/adultRegistration", (req, res) => {
+  res.render('adultRegistration.ejs');
+});
+
 
 // @route         Get records
 // @description   Get all students
 // @access        Private
-
 // router.get('/info', getRegistrants);
 router.get('/info', getInfo);
+
+
+
+
 
 
 

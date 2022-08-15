@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script defer src="../dist/js/popper.min.js"></script>
+    <title>Registro Niños</title>
+</head>
+<body onload="tokenExists()" style="opacity:0;">
+  
+  <%-include("Navbar.ejs"); %>
+
+  <div class="container mt-5">
+    <form target="_blank" id="registerForm" class="needs-validation" method="post"  action="http://localhost:5002/registrant/registerUser" novalidate>
+      <!-- -----General Data----- -->
+      <h2 class="text-center">
+        <small class="">Datos del inscrito (a)</small>
+      </h2><br>
+
+      <div class="row justify-content-center mx-auto">
+        <div class="col-sm-9 col-lg-4 text-muted mb-4">
+          <label class="text-muted" for="name">Nombre(s):</label>
+          <input type="text" class="form-control " id="name" name="nombre" required>
+          <p class="invalid-feedback">Campo Obligatorio</p>
+        </div>
+        <div class="col-sm-9 col-lg-5 mb-4">
+          <label class="text-muted" for="lastname">Apellidos</label>
+          <input type="text" class="form-control " id="lastname" name="apellidos" required>
+          <p class="invalid-feedback">Campo Obligatorio</p>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mx-auto">
+        <div class="mb-3 col-sm-9 col-lg-3">
+          <label class="text-muted" for="date">Fecha de nacimiento:</label>
+          <input type="date" class="form-control " min="1922-01-01" max="2022-12-31" aria-label="Amount" aria-describedby="birthDateInputGroup" id="birthDate" name="fechaNacimiento" required>
+          <p class="invalid-feedback">Campo Obligatorio</p>
+        </div>
+        <div class="mb-3 col-sm-7 col-lg-3">
+          <label class="text-muted" for="age">Edad:</label>
+          <input type="number" class="form-control" id="age" onchange="showWorkshops()" min="0" aria-label="Amount" aria-describedby="ageInputGroup" id="age" name="edad" required>
+          <p class="invalid-feedback">Campo Obligatorio</p>
+        </div>
+        <div class="mb-3 col-sm-2  col-lg-3">
+          <label class="text-muted" for="validationClientText">Sexo:</label><br>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="sexo" id="sexoRadio1" value="femenino" required>
+            <label class="form-check-label" for="sexoRadio1">Femenino</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="sexo" id="sexoRadio2" value="masculino">
+            <label class="form-check-label" for="sexoRadio2">Masculino</label>
+            <p class="invalid-feedback ml-5">Campo obligatorio</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mx-auto mb-4">
+        <div class="col-sm-9 col-lg-4 mb-4">
+          <label class="text-muted" for="curp">CUPR:</label>
+          <input type="text" class="form-control " id="curp" name="curp" required>
+          <p class="invalid-feedback">Campo Obligatorio</p>
+        </div>
+        <div class="col-sm-9 col-lg-5 mb-4">
+          <label class="text-muted" for="escolaridad">Escolaridad: </label>
+          <select class="form-control " id="escolaridad" name="escolaridad" required>
+            <option value="">- -</option>
+            <option value="preescolar">Educación Preescolar</option>
+            <option value="primaria">Educación Primaria</option>
+            <option value="secundaria">Educación Secundaria</option>
+            <option value="media superior">Educación Media Superior</option>
+            <option value="superior">Educación Superior</option>
+            <option value="maestría">Maestría</option>
+            <option value="posgrado">Posgrado</option>
+          </select>
+          <p class="invalid-feedback">Campo Obligatorio</p>
+        </div>
+      </div> 
+      <!-- General Family Data -->
+      <h2 class="text-center">
+        <small class="">Datos de madre, padre o tutor</small>
+      </h2><br>
+
+      <div class="row justify-content-center mx-auto">
+        <div class="col-sm-9 col-lg-6 mb-4">
+          <label class="text-muted" for="tutorName">Nombre de madre, padre o tutor:</label>
+          <input type="text" class="form-control " id="tutorName" name="nombreTutor" required>
+          <p class="invalid-feedback">Campo Obligatorio</p>
+        </div>
+        <div class="col-sm-9 col-lg-3 mb-4">
+          <label class="text-muted" for="family" class="form-label">Parentesco con el inscrito: </label><br>
+          <select class="form-control " id="family" name="parentesco" required>
+            <option value="">- -</option>
+            <option value="Papás">Madre o Padre</option>
+            <option value="Abuelos">Abuelos</option>
+            <option value="Tío(a)s">Tía o Tío</option>
+            <option value="otro">Otro</option>
+          </select>
+          <p class="invalid-feedback">Campo Obligatorio</p>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mx-auto">
+        <div class="col-sm-5 col-lg-4 mb-4">
+          <label class="text-muted" for="email">Correo electronico para enviar nuestro boletín de notificaciones y recordatorios: </label>
+          <input type="text" class="form-control " id="email" name="email" required>
+          <p class="invalid-feedback">Campo Obligatorio</p>
+        </div>
+        <div class="col-sm-4 col-lg-4 mb-4">
+          <label class="text-muted" for="cellphoneNumber">Numero celular del padre, madre o tutor para confirmar la inscipción: </label>
+          <input type="tel" class="form-control " id="cellphoneNumber" placeholder="55 5555 5555" name="numeroTelefonico" pattern="[0-9]{2} [0-9]{4} [0-9]{4}" required>
+          <p class="invalid-feedback">Campo Obligatorio. Por favor sigue el formato solicitado(55 5555 5555)</p>
+        </div>
+      </div>
+
+      <!-- Housing Information -->
+
+      <div class="row justify-content-center mx-auto mb-4" onload="hideForms()">
+        <div class="col-sm-9 col-lg-3">
+          <label class="text-muted" for="countrySelect" class="form-label">País:</label><br>
+          <select class="form-control " id="countrySelect" onchange="selectLivingPlaceForm()" name="pais" required>
+            <option value="">- -</option>
+            <option value="México">México</option>
+            <option value="otro">Otro</option>
+          </select>
+          <p class="invalid-feedback">Campo Obligatorio</p>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mx-auto">
+        <div class="col-sm-9 col-lg-3 countryForm mb-4" id="form1-q-1">
+          <label class="text-muted" for="colonia">Colonia:</label>
+          <input type="text" class="form-control " id="colonia" name="colonia">
+          <p class="invalid-feedback">Campo Obligatorio</p>
+        </div>
+        <div class="col-sm-9 col-lg-3 countryForm mb-4" id="form1-q-2">
+          <label class="text-muted" for="alcaldia">Alcaldía o Municipio:</label>
+          <input type="text" class="form-control " id="alcaldia" name="alcaldia">
+          <p class="invalid-feedback">Campo Obligatorio</p>
+        </div>
+        <div class="col-sm-9 col-lg-2 countryForm mb-4" id="form1-q-3">
+          <label class="text-muted" for="entiestadodad" class="form-label">Entidad Federativa: </label><br>
+          <select class="form-control " id="estado" name="estado">
+            <option value="">- -</option>
+            <option value="Aguas Calientes">Aguas Calientes</option>
+            <option value="Baja California">Baja California</option>
+            <option value="Baja California Sur">Baja California Sur</option>
+            <option value="Campeche">Campeche</option>
+            <option value="Chiapas">Chiapas</option>
+            <option value="Chihuaha">Chihuaha</option>
+            <option value="Coahuila de Zaragoza">Coahuila de Zaragoza</option>
+            <option value="Colima">Colima</option>
+            <option value="Ciudad de México">Ciudad de México</option>
+            <option value="Durango">Durango</option>
+            <option value="Estado de México">Estado de México</option>
+            <option value="Guanajuato">Guanajuato</option>
+            <option value="Guerrero">Guerrero</option>
+            <option value="Hidalgo">Hidalgo</option>
+            <option value="Jalisco">Jalisco</option>
+            <option value="Michoacán de Ocampo">Michoacán de Ocampo</option>
+            <option value="Morelos">Morelos</option>
+            <option value="Nayarit">Nayarit</option>
+            <option value="Nuevo León">Nuevo León</option>
+            <option value="Oaxaca">Oaxaca</option>
+            <option value="Puebla">Puebla</option>
+            <option value="Querétaro">Querétaro</option>
+            <option value="Quintana Roo">Quintana Roo</option>
+            <option value="San Luis Potosí">San Luis Potosí</option>
+            <option value="Sinaloa">Sinaloa</option>
+            <option value="Sonora">Sonora</option>
+            <option value="Tabasco">Tabasco</option>
+            <option value="Tamaulipas">Tamaulipas</option>
+            <option value="Tlaxcala">Tlaxcala</option>
+            <option value="Veracruz de Ignacio de la Llave">Veracruz de Ignacio de la Llave</option>
+            <option value="Yucatán">Yucatán</option>
+            <option value="Zacatecas">Zacatecas</option>
+          </select> 
+          <p class="invalid-feedback">Campo Obligatorio</p>
+        </div>
+      </div> 
+
+      <div class="row justify-content-center mx-auto">
+        <div class="col-sm-9 col-lg-3 countryForm mb-4" id="form2-q-1">
+          <label class="text-muted" for="pais">¿De que país eres?</label>
+          <input type="text" class="form-control " id="pais" name="pais">
+          <p class="invalid-feedback">Campo Obligatorio</p>
+        </div>
+        <div class="col-sm-9 col-lg-5 countryForm mb-4" id="form2-q-2">
+          <label class="text-muted" for="estado">¿En qué Estado, Departamento, Provincia o Región vives?</label>
+          <input type="text" class="form-control " id="estado" name="estado">
+          <p class="invalid-feedback">Campo Obligatorio</p>
+        </div>
+      </div> 
+
+
+      <!-- Workshops -->
+
+      <!-- Headers -->
+      <div onload="hideForms()">
+        <div class="taller" id="workshops_header">
+          <h2 class="text-center mt-4" id="workshops">
+            <small>Talleres</small>
+          </h2><br>
+          
+          <div class="row justify-content-center mx-auto mb-4 ">
+            <label>A que talleres deseas inscribirte:</label>
+          </div>
+    
+          <div class="row justify-content-center mx-auto mb-4 ">
+            <h5 class="col-sm-1 col-lg-9 text-center">
+              <small>Presencial</small>
+            </h5>
+            <div class="col-lg-6"></div>
+          </div>
+        </div>
+
+        
+
+        <!-- Seccion presencial -->
+        <!-- talleres 5 a 7 año -->
+        <div class="taller" id="workshops_5_7">
+          <div class="row justify-content-center mb-4 ml-5">
+            <div class="col-lg-1"></div>
+            <div class="col-sm-5 col-lg-5 form-check mb-4">
+              <input type="checkbox" class="form-check-input ml-4" id="tallerCheck1" name="talleres" value="623b4c8b653dc7445fd41653">
+              <label class="form-check-label text-muted ml-5" for="tallerCheck1">El Club de Felichuy</label>
+            </div>
+          </div>
+        </div>
+        
+
+        <!-- talleres 8 a 12 año  -->
+        <div class="taller" id="workshops_8_12">
+          <div class="row justify-content-center mx-auto mb-4">
+            <div class="col-sm-5 col-lg-2 form-check mb-4">
+              <input type="checkbox" class="form-check-input ml-4" id="tallerCheck1" name="talleres" value="61f84c02379ac4aa96e29302">
+              <label class="form-check-label text-muted ml-5" for="tallerCheck1">DivertiCiencia</label>
+            </div>
+            <div class="col-sm-5 col-lg-2 form-check mb-4">
+              <input type="checkbox" class="form-check-input ml-4" id="tallerCheck2" name="talleres" value="61f84c4e379ac4aa96e29305">
+              <label class="form-check-label text-muted ml-5" for="tallerCheck2">Desarrollo Musical</label>
+            </div>
+            <div class="col-sm-5 col-lg-2 form-check mb-4">
+              <input type="checkbox" class="form-check-input ml-4" id="tallerCheck3" name="talleres" value="61f84c66379ac4aa96e29308">
+              <label class="form-check-label text-muted ml-5" for="tallerCheck3">Mentes Flexibles</label>
+            </div>
+            <div class="col-sm-5 col-lg-2 form-check mb-4">
+              <input type="checkbox" class="form-check-input ml-4" id="tallerCheck4" name="talleres" value="61f84ca9379ac4aa96e2930b">
+              <label class="form-check-label text-muted ml-5" for="tallerCheck4">Iniciación Musical</label>
+            </div>
+          </div>
+        </div>
+
+        
+
+        <!-- talleres 13 a 17 años  -->
+        <div class="taller" id="workshops_13_17">
+          <div class="row justify-content-center mb-4 ml-4">
+            <div class="col-lg-1"></div>
+            <div class="col-sm-6 col-lg-3 form-check mb-4">
+              <input type="checkbox" class="form-check-input ml-4" id="tallerCheck1" name="talleres" value="623b5ffabcb3d5d25c7f824c">
+              <label class="form-check-label text-muted ml-5" for="tallerCheck1">Las Netas del Planeta</label>
+            </div>
+            <div class="col-sm-5 col-lg-5 form-check mb-4">
+              <input type="checkbox" class="form-check-input ml-4" id="tallerCheck2" name="talleres" value="61f84c4e379ac4aa96e29305">
+              <label class="form-check-label text-muted ml-5" for="tallerCheck2">Desarrollo Musical</label>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Seccion digital -->
+        
+        <div class="taller" id="titleDig">
+          <div class="row justify-content-center mx-auto mb-4">
+            <h5 class="col-sm-1 col-lg-9 text-center">
+              <small>Digital</small>
+            </h5>
+          </div>
+        </div>
+        
+        
+        <!-- talleres 5 a 7 digital -->
+        <div class="taller" id="workshop_5_7_dig">
+          <div class="row justify-content-center mb-4 ml-5">
+            <div class="col-lg-1"></div>
+            <div class="col-sm-5 col-lg-3 form-check mb-4">
+              <input type="checkbox" class="form-check-input ml-4" id="tallerCheck1" name="talleres" value="623b4c3c653dc7445fd4164f">
+              <label class="form-check-label text-muted ml-5" for="tallerCheck1">ApreciARTE</label>
+            </div>
+            <div class="col-sm-5 col-lg-5 form-check mb-4">
+              <input type="checkbox" class="form-check-input ml-4" id="tallerCheck2" name="talleres" value="623b4c86653dc7445fd41651">
+              <label class="form-check-label text-muted ml-5" for="tallerCheck2">El Club de Felichuy</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- talleres 8 a 12 digital -->
+        <div class="taller" id="workshop_8_12_dig">
+          <div class="row justify-content-center mb-4">
+            <div class="col-sm-5 col-lg-2 form-check mb-4">
+              <input type="checkbox" class="form-check-input ml-4" id="tallerCheck1" name="talleres" value="61f84d9187b684ab017ebf94">
+              <label class="form-check-label text-muted ml-5" for="tallerCheck1">Desarrolla tu creatividad</label>
+            </div>
+            <div class="col-sm-5 col-lg-2 form-check mb-4">
+              <input type="checkbox" class="form-check-input ml-4" id="tallerCheck2" name="talleres" value="61f84dad87b684ab017ebf96">
+              <label class="form-check-label text-muted ml-5" for="tallerCheck2">Mentes Flexibles</label>
+            </div>
+            <div class="col-sm-5 col-lg-2 form-check mb-4">
+              <input type="checkbox" class="form-check-input ml-4" id="tallerCheck3" name="talleres" value="61f84d2387b684ab017ebf90">
+              <label class="form-check-label text-muted ml-5" for="tallerCheck3">Iniciación Musical</label>
+            </div>
+            <div class="col-sm-5 col-lg-2 form-check mb-4">
+              <input type="checkbox" class="form-check-input ml-4" id="tallerCheck4" name="talleres" value="61f84d7087b684ab017ebf92">
+              <label class="form-check-label text-muted ml-5" for="tallerCheck4">VideoBloggers</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- talleres 13 a 17 digital -->
+        <div class="taller" id="workshop_13_17_dig">
+          <div class="row justify-content-center mb-4 ml-5">
+            <div class="col-lg-1"></div>
+            <div class="col-sm-5 col-lg-5 form-check mb-4">
+              <input type="checkbox" class="form-check-input ml-1" id="tallerCheck1" name="talleres" value="623b4c3c653dc7445fd4164f">
+              <label class="form-check-label text-muted ml-4" for="tallerCheck1">Laboratorio de Streaming (Híbrido)</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reachability -->
+      <div class="row justify-content-center mb-4">
+        <div class="col-sm-6 col-lg-4 mb-4 ml-1">
+          <label class="text-muted" for="alcance">¿Cómo te enteraste de nuestros servicios? </label>
+          <select class="form-control" id="alcance" name="alcance" required>
+            <option value="">- -</option>
+            <option value="publicidad en facebook">Publicidad en Facebook</option>
+            <option value="videos en youtube">Videos en Youtube</option>
+            <option value="buscador google">Buscador de Google</option>
+            <option value="instagram">Instagram</option>
+            <option value="recomendación">Recomendación</option>
+            <option value="talleres en Sanfel">He tomado talleres en Sanfel</option>
+          </select>
+          <p class="invalid-feedback">Campo Obligatorio</p>
+        </div>
+      </div> 
+      <!-- Demographic Data -->
+      <h2 class="text-center">
+        <small class="">Datos Demográficos</small>
+      </h2><br>
+      <div class="row justify-content-center mx-auto mb-4">
+        <h5 class="col-sm-8 col-lg-5 ml-5 text-center">
+          <small>¿Con cuál de estos servicios cuentas?</small>
+        </h5>
+        <div class="col-lg-5"></div>
+      </div>
+      <div class="row justify-content-center ml-5">
+        <div class="col-sm-5 col-lg-2 form-check mb-4">
+          <input type="checkbox" class="form-check-input ml-4" id="tallerescheck1" name="serviciosBasicos" value="agua">
+          <label class="form-check-label text-muted ml-5" for="tallerescheck1" >Agua</label>
+        </div>
+        <div class="col-sm-5 col-lg-2 form-check mb-4">
+          <input type="checkbox" class="form-check-input ml-4" id="tallerescheck2" name="serviciosBasicos" value="alumbrado público">
+          <label class="form-check-label text-muted ml-5" for="tallerescheck2">Alumbrado Público</label>
+        </div>
+        <div class="col-sm-5 col-lg-2 form-check mb-4">
+          <input type="checkbox" class="form-check-input ml-4" id="tallerescheck3" name="serviciosBasicos" value="cableado telefónico">
+          <label class="form-check-label text-muted ml-5" for="tallerescheck3">Cableado Telefónico</label>
+        </div>
+        <div class="col-sm-5 col-lg-2 form-check mb-4">
+          <input type="checkbox" class="form-check-input ml-4" id="tallerescheck4" name="serviciosBasicos" value="drebaje">
+          <label class="form-check-label text-muted ml-5" for="tallerescheck4">Drenaje</label>
+        </div>
+      </div>
+      <div class="row justify-content-center mb-4 ml-5">
+        <div class="col-sm-5 col-lg-2 form-check mb-4">
+          <input type="checkbox" class="form-check-input ml-4" id="tallerescheck1" name="serviciosBasicos" value="recolección de basura">
+          <label class="form-check-label text-muted ml-5" for="tallerescheck1">Recolección de Basura</label>
+        </div>
+        <div class="col-sm-5 col-lg-2 form-check mb-4">
+          <input type="checkbox" class="form-check-input ml-4" id="tallerescheck2" name="serviciosBasicos" value="tubería gas">
+          <label class="form-check-label text-muted ml-5" for="tallerescheck2">Tuberías de Gas</label>
+        </div>
+        <div class="col-sm-5 col-lg-2 form-check mb-4">
+          <input type="checkbox" class="form-check-input ml-4" id="tallerescheck3" name="serviciosBasicos" value="cableado television">
+          <label class="form-check-label text-muted ml-5" for="tallerescheck3">Cableado de Televisión</label>
+        </div>
+        <div class="col-sm-5 col-lg-2 form-check mb-4">
+          <input type="checkbox" class="form-check-input ml-4" id="tallerescheck4" name="serviciosBasicos" value="otros">
+          <label class="form-check-label text-muted ml-5" for="tallerescheck4">Otros Servicios</label>
+        </div>
+      </div>
+
+
+      <div class="row justify-content-center mx-auto mb-4">
+        <h5 class="col-sm-8 col-lg-6 text-center">
+          <small>¿Qué situacion de riesgo ubicas en tu colonia?</small>
+        </h5>
+        <div class="col-lg-4"></div>
+      </div>
+      <div class="row justify-content-center ml-5">
+        <div class="col-sm-5 col-lg-2 form-check mb-4">
+          <input type="checkbox" name="situacionesRiesgo" value="maltrato familiar" class="form-check-input ml-4" id="riesgoscheck1">
+          <label class="form-check-label text-muted ml-5" for="riesgoscheck1">Maltrato Familiar</label>
+        </div>
+        <div class="col-sm-5 col-lg-2 form-check mb-4">
+          <input type="checkbox" name="situacionesRiesgo" value="alcoholismo" class="form-check-input ml-4" id="riesgoscheck2">
+          <label class="form-check-label text-muted ml-5" for="riesgoscheck2">Alcoholismo</label>
+        </div>
+        <div class="col-sm-5 col-lg-2 form-check mb-4">
+          <input type="checkbox" name="situacionesRiesgo" value="drogadicción" class="form-check-input ml-4" id="riesgoscheck3">
+          <label class="form-check-label text-muted ml-5" for="riesgoscheck3">Drogadicción</label>
+        </div>
+        <div class="col-sm-5 col-lg-2 form-check mb-4">
+          <input type="checkbox" name="situacionesRiesgo" value="delincuencia" class="form-check-input ml-4" id="riesgoscheck4">
+          <label class="form-check-label text-muted ml-5" for="riesgoscheck4">Delincuencia</label>
+        </div>
+      </div>
+      <div class="row justify-content-center mb-4 ml-5">
+        <div class="col-sm-5 col-lg-2 form-check mb-4">
+          <input type="checkbox" name="situacionesRiesgo" value="pandillas" class="form-check-input ml-4" id="riesgoscheck1">
+          <label class="form-check-label text-muted ml-5" for="riesgoscheck1">Pandillas</label>
+        </div>
+        <div class="col-sm-5 col-lg-2 form-check mb-4">
+          <input type="checkbox" name="situacionesRiesgo" value="personas en situación de calle" class="form-check-input ml-4" id="riesgoscheck2">
+          <label class="form-check-label text-muted ml-5" for="riesgoscheck2">Personas en situación de calle</label>
+        </div>
+        <div class="col-sm-5 col-lg-2 form-check mb-4">
+          <input type="checkbox" name="situacionesRiesgo" value="abuso de autoridad" class="form-check-input ml-4" id="riesgoscheck3">
+          <label class="form-check-label text-muted ml-5" for="riesgoscheck3">Abuso de autoridad</label>
+        </div>
+        <div class="col-sm-5 col-lg-2 form-check mb-4">
+          <input type="checkbox" name="situacionesRiesgo" value="prostitución" class="form-check-input ml-4" id="riesgoscheck4">
+          <label class="form-check-label text-muted ml-5" for="riesgoscheck4">Prostitución</label>
+        </div>
+      </div>
+
+
+      <div class="row justify-content-center mx-auto mb-3">
+        <div class="col-sm-9 col-lg-3 mb-4">
+          <label class="text-muted" for="validationClientText">¿Ubicas alguna otra situación de riesgo que no este en la relación enterior?</label>
+          <input type="text" class="form-control" id="validationTutorName" name="situacionesRiesgo">
+        </div>
+        <div class="col-sm-9 col-lg-3 my-auto pb-4">
+          <label class="text-muted" for="dangerSelect" class="form-label">La zona en la que vives es: </label><br>
+          <select class="form-control" id="dangerSelect" name="nivelRiesgoVivienda" required>
+            <option value="">- -</option>
+            <option value="alto">Alto Riesgo</option>
+            <option value="mediano">Mediano Riesgo</option>
+            <option value="bajo">Bajo Riesgo</option>
+          </select>
+          <p class="invalid-feedback">Campo Obligatorio</p>
+        </div>
+        <div class="col-sm-9 col-lg-3 my-auto">
+          <label class="text-muted mt-1" for="viviendaSelect" class="form-label">¿En que tipo de vivienda Hábitas?</label><br>
+          <select class="form-control" id="viviendaSelect" name="tipoVivienda" required>
+            <option value="">- -</option>
+            <option value="casa">Casa</option>
+            <option value="departamento">Departamento</option>
+            <option value="cuarto">Cuarto</option>
+            <option value="campamento">Campamento</option>
+            <option value="otro">Otro</option>
+          </select>
+          <p class="invalid-feedback">Campo Obligatorio</p>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mt-5">
+        <div class="form-group col-lg-9 text-center">
+          <a data-toggel="modal" href="https://www.fsanfelipe.org.mx/AvisodePrivacidad.pdf">Leer Aviso de Privacidad</a>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-9 text-center">
+          <label class="mr-2" for="avisoPrivacidad">He leído el Aviso de privacidad y lo acepto</label>
+          <input type="checkbox" id="avisoPrivacidad" class='aviso form-check-input ml-1' required>
+          <p class="invalid-feedback">Campo Obligatorio</p>
+        </div>
+      </div>
+
+      <div style="text-align: center;" class="mt-5">
+        <button class="btn btn-form px-3" onclick="registration()">Enviar</button>
+        <p class="invalid-feedback">Campo Obligatorio</p>
+      </div>
+    </form> 
+    
+  </div><br><br><br>
+  <script defer src="/public/routes.js"></script>
+  <script defer src="/public/registrants.js"></script>
+  <script defer src="../public/login.js"></script>
+  <script defer src="/dist/js/form-validation.js"></script>
+</body>
+</html>

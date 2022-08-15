@@ -36,6 +36,17 @@ async function registerArea(req, res) {
   }
 }
 
+async function getInfoForms(req, res) {
+  
+  const forms = await Area.find({}, {description: 1, timesAnswered: 1});
+  res.json({
+    forms: forms,
+    status: 200
+  });
+  console.log(forms);
+}
+
 module.exports = {
-  registerArea
+  registerArea,
+  getInfoForms
 }

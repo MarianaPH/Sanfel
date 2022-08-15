@@ -5247,6 +5247,10 @@ a.badge-dark:focus, a.badge-dark.focus {
   border-color: #f5c6cb;
 }
 
+.alert-danger-size {
+  width: 35%;
+}
+
 .alert-danger hr {
   border-top-color: #f1b0b7;
 }

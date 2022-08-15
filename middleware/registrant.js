@@ -53,7 +53,7 @@ async function validateRegister(req, res) {
 
 async function registration(req, res) {
   try {
-    console.log(req.body);
+    // console.log(req.body);
     const result = await registerSchemaRegistrant.validateAsync(req.body);
 
     var registrant = await Registrant.findOne(
@@ -63,13 +63,13 @@ async function registration(req, res) {
     if (registrant) return res.status(400).json(
       { errors: 
         [
-          { msg: "El registrante ya existe" }
+          { msg: "El usuario ya existe" }
         ]
       }
     );
 
     const values = validateLivingPlace(result);
-    console.log(values.talleres);
+    console.log(result);
 
     var registrant = new Registrant({
       nombre: result.nombre,
@@ -95,12 +95,10 @@ async function registration(req, res) {
       tipoVivienda: result.tipoVivienda
     });
 
-    console.log(registrant);
-
     await registrant.save();
 
     res.json({
-      msg: 'Usuario: ' + registrant.nombre + registrant.apellidos + ', registrado correctamente.'
+      msg: 'Usuario: ' + registrant.nombre + '' + registrant.apellidos + ', registrado correctamente.'
     })
 
   } catch (error) {
@@ -183,26 +181,6 @@ async function getRegistrants(){
         registrants[3].push(user);
       }
     });
-
-    // registrants[0].map(user =>{
-    //   console.log(user);
-    // });
-    // console.log('-----1----');
-
-    // registrants[1].map(user =>{
-    //   console.log(user);
-    // });
-    // console.log('-----2----');
-
-    // registrants[2].map(user =>{
-    //   console.log(user);
-    // });
-    // console.log('-----3----');
-
-    // registrants[3].map(user =>{
-    //   console.log(user);
-    // });
-    // console.log('-----4----');
 
 
     return registrants;
@@ -308,6 +286,8 @@ function exportExcel(allData, workSheetColumnNames, workSheetNames, filePath) {
     return status = 500;
   }
 }
+
+
 
 
 module.exports = {

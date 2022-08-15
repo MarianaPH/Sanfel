@@ -26,12 +26,10 @@ const RegistrantSchema = new mongoose.Schema({
     required: true
   },
   nombreTutor: {
-    type: String,
-    required: true
+    type: String
   },
   parentesco: {
-    type: String,
-    required: true
+    type: String
   },
   email: {
     type: String,

@@ -4,6 +4,8 @@
     <!-- <link href="../dist/css/bootstrapnew.css" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
     <script defer src="../dist/js/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
     <title>Dashboard</title>
 </head>
 
@@ -11,10 +13,61 @@
 <body onload="tokenExists()" style="opacity:0;">
     
     <%-include("Navbar.ejs"); %>
-      
+    <div class="container mt-5" onload="formInfo()">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Formularios Contestados</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Definido por Instrumentos</h6>
+                      <canvas id="doughnut-chart" width="800" height="450"></canvas>
+                      <!-- <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Personas Registradas</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Definido por rango de edades</h6>
+                      <canvas id="doughnut-chart2" width="800" height="450"></canvas>
+                      <!-- <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row">
+            <div class="col-lg-6 col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                      <canvas id="doughnut-chart3" width="800" height="450"></canvas>
+                      <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                      <canvas id="doughnut-chart4" width="800" height="450"></canvas>
+                      <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        
+    </div>      
     <script defer src="/public/routes.js"></script>
     <script defer src="/public/registrants.js"></script>
     <script defer src="/public/login.js"></script>
+    <script defer src="/public/chart.js"></script>
 </body>
 
 </html>

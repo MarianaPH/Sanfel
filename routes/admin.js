@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {validationUser} = require("../middleware/admin");
+const {validationUser, getDashboardInfo} = require("../middleware/admin");
 const {auth, authPage} = require ('../middleware/auth');
 
 //@route      POST api/admin
@@ -13,7 +13,18 @@ router.post("/", auth, authPage(["admin"]), validationUser);
 //access      Private
 router.get("/dashboard", (req, res) => {
   res.render('index.ejs');
-});
+})
+
+//@route      GET api/admin/records
+//@desc       Render records
+//access      Private
+router.get("/dashboardInfo", (req, res) => {
+  console.log("infoDashboard");
+  var data = getDashboardInfo();
+  res.send(data);
+})
+
+
 
 
 
